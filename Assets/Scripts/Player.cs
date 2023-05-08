@@ -5,8 +5,11 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float speed = 1f; // Speed variable
-    public Rigidbody rb; // Set the variable 'rb' as Rigibody
-    public Vector3 movement; // Set the variable 'movement' as a Vector3 (x,y,z)
+    private Rigidbody rb; // Set the variable 'rb' as Rigibody
+
+    public float dashCooldownLength = 0;
+    public float dashCooldown = 0;
+    public bool isDashing = false;
 
     // Start is called before the first frame update
     void Start()
@@ -23,5 +26,9 @@ public class Player : MonoBehaviour
         //Apply the movement vector to the current position, which is
         //multiplied by deltaTime and speed for a smooth MovePosition
         rb.MovePosition(transform.position + input * Time.deltaTime * speed);
+
+        if (dashCooldown >= 0) {
+            dashCooldown -= Time.deltaTime;
+        }
     }
 }
