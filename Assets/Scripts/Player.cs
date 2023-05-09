@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
         if (dashCooldown > 0) {
             dashCooldown -= Time.deltaTime;
         }
+
     }
 
 
@@ -56,6 +57,10 @@ public class Player : MonoBehaviour
             isDashing = false;
             Debug.Log("Done Dash");
             sr.color = new Color(1,1,1,1);
+        }
+
+        if (transform.position.y < -1f) {
+            transform.position = new Vector3(0,2,0);
         }
     }
 }
