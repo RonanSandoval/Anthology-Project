@@ -31,6 +31,8 @@ public class DialogueController : MonoBehaviour
     }
 
     public void startDialogue() {
+
+        GameStateManager.Instance.setCurrentState(GameStateManager.GameState.Talking);
         selectDialogue();
 
         Debug.Log(selectedDialogue.script[0]);

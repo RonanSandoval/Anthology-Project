@@ -9,6 +9,6 @@ public class Dialogue : MonoBehaviour
     public GameProgressManager.ProgressFlag dialogueFlag;
 
     public bool dialogueIsAvailable() {
-        return GameProgressManager.Instance.progressComplete.Contains(dialogueFlag);
+        return GameProgressManager.Instance.checkProgress(dialogueFlag);
     }
 }

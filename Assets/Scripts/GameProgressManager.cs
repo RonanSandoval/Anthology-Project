@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameProgressManager : MonoBehaviour
 {
-    public static GameProgressManager Instance;
+    public static GameProgressManager Instance { get; private set; }
 
     public enum ProgressFlag {None, TalkedToDenial, FinishedDenial};
 
@@ -23,5 +23,13 @@ public class GameProgressManager : MonoBehaviour
             Instance = this; 
             progressComplete.Add(ProgressFlag.None);
         } 
+    }
+
+    public void addProgress(ProgressFlag flag) {
+        progressComplete.Add(flag);
+    }
+
+    public bool checkProgress(ProgressFlag flag) {
+        return progressComplete.Contains(flag);
     }
 }

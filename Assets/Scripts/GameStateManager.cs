@@ -4,18 +4,32 @@ using UnityEngine;
 
 public class GameStateManager : MonoBehaviour
 {
+    public static GameStateManager Instance { get; private set; }
+
     public enum GameState {Exploring, Talking};
     public GameState currentState;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        currentState = GameState.Exploring;
+    private void Awake() 
+    { 
+        // If there is an instance, and it's not me, delete myself.
+        
+        if (Instance != null && Instance != this) 
+        { 
+            Destroy(this); 
+        } 
+        else 
+        { 
+            Instance = this; 
+            currentState = GameState.Exploring;
+            DontDestroyOnLoad(gameObject);
+        } 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public GameState getCurrentState() {
+        return currentState;
+    }
+
+    public void setCurrentState(GameState state) {
+        currentState = state;
     }
 }
