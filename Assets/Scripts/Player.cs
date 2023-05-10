@@ -16,16 +16,20 @@ public class Player : MonoBehaviour
 
     private SpriteRenderer sr;
 
+    private bool canMove;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         sr = GetComponent<SpriteRenderer>();
+        
+        canMove = true;
     }
 
     void Update() {
         // dash
-        if (Input.GetKeyDown("space") && dashCooldown <= 0) {
+        if (canMove && Input.GetKeyDown("space") && dashCooldown <= 0) {
             dashed = true;
             Debug.Log("dash");
             dashCooldown = dashCooldownLength;
@@ -43,8 +47,11 @@ public class Player : MonoBehaviour
         //Store user input as a movement vector
         Vector3 input = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
-        //rb.MovePosition(transform.position + input * Time.deltaTime * speed);
-        rb.AddForce(input * speed);
+        if (canMove) {
+            //rb.MovePosition(transform.position + input * Time.deltaTime * speed);
+            rb.AddForce(input * speed);
+        }
+        
 
         if (dashed) {
             rb.velocity = new Vector3((input * dashPower).x, rb.velocity.y, (input * dashPower).z);
@@ -62,5 +69,13 @@ public class Player : MonoBehaviour
         if (transform.position.y < -1f) {
             transform.position = new Vector3(0,2,0);
         }
+    }
+
+    public void pauseMovement() {
+        canMove = false;
+    }
+
+    public void resumeMovement() {
+        canMove = true;
     }
 }

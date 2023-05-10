@@ -1,15 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DialogueController : MonoBehaviour
 {
     public Dialogue selectedDialogue;
 
+    public DialogueBox dialogueBox;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        dialogueBox = GameObject.Find("Dialogue Box").GetComponent<DialogueBox>();
     }
 
     // Update is called once per frame
@@ -34,8 +37,7 @@ public class DialogueController : MonoBehaviour
 
         GameStateManager.Instance.setCurrentState(GameStateManager.GameState.Talking);
         selectDialogue();
-
-        Debug.Log(selectedDialogue.script[0]);
+        dialogueBox.startDialogue(this);
     }
 
     private void OnTriggerEnter(Collider other)
