@@ -29,6 +29,10 @@ public class GameStateManager : MonoBehaviour
         return currentState;
     }
 
+    public bool checkState(GameState state) {
+        return currentState == state;
+    }
+
     public void setCurrentState(GameState state) {
         currentState = state;
     }

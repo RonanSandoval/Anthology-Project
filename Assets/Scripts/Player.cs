@@ -15,8 +15,8 @@ public class Player : MonoBehaviour
     public float dashPower;
 
     private SpriteRenderer sr;
-
     private bool canMove;
+    private Vector3 storedDirection;
 
     // Start is called before the first frame update
     void Start()
@@ -45,25 +45,32 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         //Store user input as a movement vector
-        Vector3 input = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
+        if (input.magnitude > 0.1f) {
+            storedDirection = input;
+            Debug.Log(storedDirection);
+        }
 
-        if (canMove) {
+        if (canMove && !isDashing) {
             //rb.MovePosition(transform.position + input * Time.deltaTime * speed);
-            rb.AddForce(input * speed);
+            // rb.AddForce(input * speed);
+             rb.velocity = new Vector3(input.x * speed, rb.velocity.y, input.z * speed);
         }
         
 
         if (dashed) {
-            rb.velocity = new Vector3((input * dashPower).x, rb.velocity.y, (input * dashPower).z);
+            rb.velocity = new Vector3((storedDirection * dashPower).x, 0f, (storedDirection * dashPower).z);
             isDashing = true;
             sr.color = new Color(1,0,1,1);
             dashed = false;
+            rb.useGravity =false;
         }
 
         if (isDashing && rb.velocity.magnitude < 15) {
             isDashing = false;
             Debug.Log("Done Dash");
             sr.color = new Color(1,1,1,1);
+            rb.useGravity = true;
         }
 
         if (transform.position.y < -1f) {
@@ -77,5 +84,6 @@ public class Player : MonoBehaviour
 
     public void resumeMovement() {
         canMove = true;
+        dashCooldown = 0.3f;
     }
 }

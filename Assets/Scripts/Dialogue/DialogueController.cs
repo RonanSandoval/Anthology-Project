@@ -9,10 +9,14 @@ public class DialogueController : MonoBehaviour
 
     public DialogueBox dialogueBox;
 
+    private GameObject keyIndicator;
+
     // Start is called before the first frame update
     void Start()
     {
         dialogueBox = GameObject.Find("Dialogue Box").GetComponent<DialogueBox>();
+        keyIndicator = transform.Find("Key Indicator").gameObject;
+        keyIndicator.GetComponent<SpriteRenderer>().enabled = false;
     }
 
     // Update is called once per frame
@@ -22,9 +26,9 @@ public class DialogueController : MonoBehaviour
     }
 
     void selectDialogue() {
-        for(int i = 0; i < transform.childCount; i++)
+        for(int i = 0; i < transform.Find("Dialogue").childCount; i++)
         {
-            GameObject child = transform.GetChild(i).gameObject;
+            GameObject child = transform.Find("Dialogue").GetChild(i).gameObject;
             Dialogue childDialogue = child.GetComponent<Dialogue>();
             if (childDialogue.dialogueIsAvailable()) {
                 selectedDialogue = childDialogue;
@@ -43,7 +47,23 @@ public class DialogueController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player") {
+            keyIndicator.GetComponent<SpriteRenderer>().enabled = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player") {
+            keyIndicator.GetComponent<SpriteRenderer>().enabled = false;
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "Player" && Input.GetKeyDown(KeyCode.E)
+            && GameStateManager.Instance.checkState(GameStateManager.GameState.Exploring)) {
             startDialogue();
         }
     }
+
 }
