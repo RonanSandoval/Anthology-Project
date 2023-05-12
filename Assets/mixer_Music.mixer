@@ -33,18 +33,24 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
---- !u!245 &-4190241635776760782
-AudioMixerSnapshotController:
-  m_ObjectHideFlags: 0
+--- !u!244 &-4320637475262731121
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: music_dialogue
-  m_AudioMixer: {fileID: 24100000}
-  m_SnapshotID: 18d56a8088bf067419bad2f2a64ad6bb
-  m_FloatValues:
-    650469a8bc4409f43863418bcbb625dd: 755
-  m_TransitionOverrides: {}
+  m_Name: 
+  m_EffectID: 8847ad9ae264b3b46a08052f6c390440
+  m_EffectName: Highpass
+  m_MixLevel: 97d5fd84f71821b4ab185544d5675e4e
+  m_Parameters:
+  - m_ParameterName: Cutoff freq
+    m_GUID: b81db953a2bd66b4488028b236fa62fb
+  - m_ParameterName: Resonance
+    m_GUID: 8dc223468fc84ac4e8b9b473bc141086
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!244 &-2209797217378477414
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -70,12 +76,17 @@ AudioMixerController:
   m_MasterGroup: {fileID: 24300002}
   m_Snapshots:
   - {fileID: 4512817322309012476}
-  - {fileID: -4190241635776760782}
   m_StartSnapshot: {fileID: 4512817322309012476}
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
   m_UpdateMode: 0
   m_ExposedParameters:
+  - guid: ae23cd2bd55b9d2459d1deb5439a6465
+    name: Master.Volume
+  - guid: b81db953a2bd66b4488028b236fa62fb
+    name: Master.Highpass
+  - guid: 650469a8bc4409f43863418bcbb625dd
+    name: Master.Lowpass
   - guid: a37e04efd5172a142a17279a526cfbfe
     name: bus_music_anger.Volume
   - guid: b7b4baaa9a262994ca3965fe48ef1f94
@@ -118,6 +129,7 @@ AudioMixerGroupController:
   m_Effects:
   - {fileID: 24400004}
   - {fileID: 497776578802041533}
+  - {fileID: -4320637475262731121}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
@@ -231,10 +243,12 @@ AudioMixerSnapshotController:
   m_SnapshotID: 6ed04fe0cd1be0643b71eea32e183538
   m_FloatValues:
     0a36b6d023d0e6941875dcd7940dd0af: -50.1241
-    9be5ec66cfa08de42a20c71c2c1e5900: -80
+    b81db953a2bd66b4488028b236fa62fb: 10
+    9be5ec66cfa08de42a20c71c2c1e5900: -50.35186
+    29df708887b969f4c9312e911400289a: 1
     650469a8bc4409f43863418bcbb625dd: 22000
-    b7b4baaa9a262994ca3965fe48ef1f94: -80
-    a37e04efd5172a142a17279a526cfbfe: -80
+    b7b4baaa9a262994ca3965fe48ef1f94: -50.35186
+    a37e04efd5172a142a17279a526cfbfe: -50.35186
   m_TransitionOverrides: {}
 --- !u!243 &5532085269301459863
 AudioMixerGroupController:
