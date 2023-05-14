@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Parent class for all interactable objects
+// Parent class for all interactable objects (must press 'E')
 public abstract class Interactable : MonoBehaviour
 {
     protected GameObject keyIndicator;
@@ -18,7 +18,6 @@ public abstract class Interactable : MonoBehaviour
     protected void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player") {
-            Debug.Log("entered");
             keyIndicator.GetComponent<SpriteRenderer>().enabled = true;
         }
     }
@@ -26,7 +25,6 @@ public abstract class Interactable : MonoBehaviour
     protected void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "Player") {
-            Debug.Log("exited");
             keyIndicator.GetComponent<SpriteRenderer>().enabled = false;
         }
     }
