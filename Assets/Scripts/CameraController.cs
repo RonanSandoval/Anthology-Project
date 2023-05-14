@@ -12,6 +12,10 @@ public class CameraController : MonoBehaviour
     public float cameraSinAmplitude;
 
     // Update is called once per frame
+    void Start() {
+        transform.position = playerObject.transform.position;
+    }
+
     void Update()
     {   
         cameraSin += Time.deltaTime * cameraSinFrequency;

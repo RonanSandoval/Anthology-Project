@@ -27,6 +27,8 @@ public class Player : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         
         canMove = true;
+
+        determineStartSpawnPoint();
     }
 
     void Update() {
@@ -94,5 +96,17 @@ public class Player : MonoBehaviour
 
     private void respawn() {
         transform.position = new Vector3(0,2,0);
+    }
+
+    void determineStartSpawnPoint() {
+        foreach(GameObject teleObject in GameObject.FindGameObjectsWithTag("Tele"))
+        {
+            if(teleObject.GetComponent<Telepoint>().index == GameSceneManager.Instance.spawnIndex)
+            {
+                transform.position = teleObject.transform.position;
+                transform.Translate(new Vector3(0,1,0));
+                break;
+            }
+        }
     }
 }

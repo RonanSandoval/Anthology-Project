@@ -7,13 +7,15 @@ public class GameSceneManager : MonoBehaviour
 {
     public static GameSceneManager Instance { get; private set; }
 
+    public int spawnIndex;
+
     private void Awake() 
     { 
         // If there is an instance, and it's not me, delete myself.
         
         if (Instance != null && Instance != this) 
         { 
-            Destroy(this); 
+            Destroy(gameObject); 
         } 
         else 
         { 
@@ -23,5 +25,9 @@ public class GameSceneManager : MonoBehaviour
 
     public void changeScene(string sceneName) {
        SceneManager.LoadScene(sceneName); 
+    }
+
+    public void setSpawnIndex(int index) {
+        spawnIndex = index;
     }
 }
