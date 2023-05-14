@@ -3,26 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class DialogueController : MonoBehaviour
+public class DialogueController : Interactable
 {
     public Dialogue selectedDialogue;
 
     public DialogueBox dialogueBox;
 
-    private GameObject keyIndicator;
+    
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         dialogueBox = GameObject.Find("Dialogue Box").GetComponent<DialogueBox>();
-        keyIndicator = transform.Find("Key Indicator").gameObject;
-        keyIndicator.GetComponent<SpriteRenderer>().enabled = false;
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     void selectDialogue() {
@@ -37,33 +31,11 @@ public class DialogueController : MonoBehaviour
         }
     }
 
-    public void startDialogue() {
+    protected override void onInteract() {
 
         GameStateManager.Instance.setCurrentState(GameStateManager.GameState.Talking);
         selectDialogue();
         dialogueBox.startDialogue(this);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Player") {
-            keyIndicator.GetComponent<SpriteRenderer>().enabled = true;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag == "Player") {
-            keyIndicator.GetComponent<SpriteRenderer>().enabled = false;
-        }
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.tag == "Player" && Input.GetKeyDown(KeyCode.E)
-            && GameStateManager.Instance.checkState(GameStateManager.GameState.Exploring)) {
-            startDialogue();
-        }
     }
 
 }

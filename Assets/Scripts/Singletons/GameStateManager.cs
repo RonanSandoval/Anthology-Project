@@ -24,7 +24,7 @@ public class GameStateManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         } 
     }
-
+    
     public GameState getCurrentState() {
         return currentState;
     }

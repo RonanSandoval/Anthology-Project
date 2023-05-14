@@ -26,7 +26,9 @@ public class GameProgressManager : MonoBehaviour
     }
 
     public void addProgress(ProgressFlag flag) {
-        progressComplete.Add(flag);
+        if (!progressComplete.Contains(flag)) {
+            progressComplete.Add(flag);
+        }
     }
 
     public bool checkProgress(ProgressFlag flag) {

@@ -13,7 +13,7 @@ public class audio_stateManager : MonoBehaviour
     public float high_endCutoffFrequency = 250f; //Hipass end
     public float volume_start = 0f;
     public float volume_end = -6f;
-    public float transitionTime = 1f; // Time it takes for the filter to transition from start to end frequency
+    public float transitionTime = 0.5f; // Time it takes for the filter to transition from start to end frequency
 
     private float low_currentCutoffFrequency; // Current cutoff frequency of the lowpass filter
     private float high_currentCutoffFrequency;
@@ -42,8 +42,8 @@ public class audio_stateManager : MonoBehaviour
             {
             // Calculate the new cutoff frequency based on the transition time
             timeElapsed_out += Time.deltaTime;
-            low_currentCutoffFrequency = Mathf.Lerp(low_startCutoffFrequency, low_endCutoffFrequency, timeElapsed_out / transitionTime);
-            high_currentCutoffFrequency = Mathf.Lerp(high_startCutoffFrequency, high_endCutoffFrequency, timeElapsed_out / transitionTime);
+            low_currentCutoffFrequency = Mathf.Lerp(low_startCutoffFrequency, low_endCutoffFrequency, timeElapsed_out / (transitionTime / 2f));
+            high_currentCutoffFrequency = Mathf.Lerp(high_startCutoffFrequency, high_endCutoffFrequency, timeElapsed_out / (transitionTime / 2f));
             volume_current = Mathf.Lerp(volume_start, volume_end, timeElapsed_out / transitionTime);
 
             // Set the new cutoff frequency of the lowpass filter

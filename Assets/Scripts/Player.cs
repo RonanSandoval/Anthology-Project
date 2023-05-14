@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
     private bool canMove;
     private Vector3 storedDirection;
 
+    private Vector3 spawnPoint;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,7 +50,6 @@ public class Player : MonoBehaviour
         Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
         if (input.magnitude > 0.1f) {
             storedDirection = input;
-            Debug.Log(storedDirection);
         }
 
         if (canMove && !isDashing) {
@@ -74,7 +75,7 @@ public class Player : MonoBehaviour
         }
 
         if (transform.position.y < -1f) {
-            transform.position = new Vector3(0,2,0);
+            respawn();
         }
     }
 
@@ -85,5 +86,13 @@ public class Player : MonoBehaviour
     public void resumeMovement() {
         canMove = true;
         dashCooldown = 0.3f;
+    }
+
+    public void setSpawnPoint(Vector3 mySpawn) {
+        spawnPoint = mySpawn;
+    }
+
+    private void respawn() {
+        transform.position = new Vector3(0,2,0);
     }
 }
