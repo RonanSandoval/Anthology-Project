@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Collectable : Touchable
+public class DreamBunny : Touchable
 {
     protected override void onTouch()
     {

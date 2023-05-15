@@ -35,7 +35,6 @@ public class Player : MonoBehaviour
         // dash
         if (canMove && Input.GetKeyDown("space") && dashCooldown <= 0) {
             dashed = true;
-            Debug.Log("dash");
             dashCooldown = dashCooldownLength;
         }
 
@@ -71,7 +70,6 @@ public class Player : MonoBehaviour
 
         if (isDashing && rb.velocity.magnitude < 15) {
             isDashing = false;
-            Debug.Log("Done Dash");
             sr.color = new Color(1,1,1,1);
             rb.useGravity = true;
         }
