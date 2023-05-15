@@ -13,12 +13,15 @@ public class Player : MonoBehaviour
     private bool dashed = false;
 
     public float dashPower;
+    private float dashTimer;
 
     private SpriteRenderer sr;
     private bool canMove;
     private Vector3 storedDirection;
 
     private Vector3 spawnPoint;
+
+    [SerializeField] private Vector3 wind;
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +43,12 @@ public class Player : MonoBehaviour
 
         if (dashCooldown > 0) {
             dashCooldown -= Time.deltaTime;
+        }
+
+        if (isDashing) {
+            dashTimer += Time.deltaTime;
+        } else {
+            dashTimer = 0;
         }
 
     }
@@ -68,11 +77,14 @@ public class Player : MonoBehaviour
             rb.useGravity =false;
         }
 
-        if (isDashing && rb.velocity.magnitude < 15) {
+        if (isDashing && (rb.velocity.magnitude < 15 || dashTimer > 0.3f)) {
             isDashing = false;
             sr.color = new Color(1,1,1,1);
             rb.useGravity = true;
         }
+
+        // apply wind
+        rb.AddForce(wind);
 
         if (transform.position.y < -1f) {
             respawn();
@@ -106,5 +118,9 @@ public class Player : MonoBehaviour
                 break;
             }
         }
+    }
+
+    public void setWind(Vector3 windVector) {
+        wind = windVector;
     }
 }
