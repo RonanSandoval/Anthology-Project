@@ -40,7 +40,7 @@ public class GameTaskManager : MonoBehaviour
     }
 
     List<Task> taskList;
-    int currentTaskIndex; // -1 means no current task
+    [SerializeField] int currentTaskIndex; // -1 means no current task
 
     private void Awake() 
     { 
@@ -54,6 +54,7 @@ public class GameTaskManager : MonoBehaviour
         { 
             DontDestroyOnLoad(gameObject);
             Instance = this;
+            currentTaskIndex = -1;
             defineTasks();
         } 
     }
@@ -79,5 +80,9 @@ public class GameTaskManager : MonoBehaviour
             currentTaskIndex = taskList[taskIndex].getCompletionTaskIndex();
              GameProgressManager.Instance.addProgress(taskList[taskIndex].getCompletionProgress());
         }
+    }
+
+    public void setCurrentTask(int currentTask) {
+        currentTaskIndex = currentTask;
     }
 }

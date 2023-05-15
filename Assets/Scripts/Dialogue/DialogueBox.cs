@@ -57,8 +57,10 @@ public class DialogueBox : MonoBehaviour
             buttonReleased = false;
         }
 
+        // on completion of dialogue
         GameProgressManager.Instance.addProgress(dialogue.flagAfterCompletion);
         GameStateManager.Instance.setCurrentState(GameStateManager.GameState.Exploring);
+        GameTaskManager.Instance.setCurrentTask(dialogue.taskIndexAfterCompletion);
         clearText();
         onDialogueEnd.Invoke();
     }

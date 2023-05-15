@@ -8,7 +8,8 @@ public class Dialogue : MonoBehaviour
     public string[] speaker;
 
     public GameProgressManager.ProgressFlag dialogueFlag;
-     public GameProgressManager.ProgressFlag flagAfterCompletion;
+    public GameProgressManager.ProgressFlag flagAfterCompletion;
+    public int taskIndexAfterCompletion;
 
     public bool dialogueIsAvailable() {
         return GameProgressManager.Instance.checkProgress(dialogueFlag);
