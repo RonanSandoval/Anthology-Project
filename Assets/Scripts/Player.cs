@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class Player : MonoBehaviour
 
     public float dashPower;
     private float dashTimer;
+    public UnityEvent onDash;
+
 
     private SpriteRenderer sr;
     private bool canMove;
@@ -39,6 +42,7 @@ public class Player : MonoBehaviour
         if (canMove && Input.GetKeyDown("space") && dashCooldown <= 0) {
             dashed = true;
             dashCooldown = dashCooldownLength;
+            onDash.Invoke();
         }
 
         if (dashCooldown > 0) {
