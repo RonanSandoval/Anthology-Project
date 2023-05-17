@@ -95,8 +95,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Dither_Size: 1
-    - Opacity: 0.5000001
+    - Dither_Size: 2
+    - Opacity: 0.20000648
     - _AlphaClip: 0
     - _Blend: 1
     - _BumpScale: 1
@@ -129,7 +129,7 @@ Material:
     - Albedo_Color: {r: 0, g: 0, b: 0, a: 1}
     - _BaseColor: {r: 1, g: 0.84139836, b: 0.27735847, a: 0.2}
     - _Color: {r: 1, g: 0.84139836, b: 0.27735847, a: 1}
-    - _Emission: {r: 1, g: 0.8032365, b: 0, a: 0}
+    - _Emission: {r: 0.46226418, g: 0, b: 0.12332764, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []

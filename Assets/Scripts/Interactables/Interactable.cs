@@ -6,6 +6,7 @@ using UnityEngine;
 public abstract class Interactable : MonoBehaviour
 {
     protected GameObject keyIndicator;
+    protected bool touchingPlayer;
 
     protected abstract void onInteract();
 
@@ -19,6 +20,7 @@ public abstract class Interactable : MonoBehaviour
     {
         if (other.gameObject.tag == "Player") {
             keyIndicator.GetComponent<SpriteRenderer>().enabled = true;
+            touchingPlayer = true;
         }
     }
 
@@ -26,14 +28,16 @@ public abstract class Interactable : MonoBehaviour
     {
         if (other.gameObject.tag == "Player") {
             keyIndicator.GetComponent<SpriteRenderer>().enabled = false;
+            touchingPlayer = false;
         }
     }
 
-    protected void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.tag == "Player" && Input.GetKeyDown(KeyCode.E)
-            && GameStateManager.Instance.checkState(GameStateManager.GameState.Exploring)) {
-            onInteract();
-        }
-    }
+     public void Update()
+ {
+      if (Input.GetKeyDown(KeyCode.E) && touchingPlayer
+      && GameStateManager.Instance.checkState(GameStateManager.GameState.Exploring))
+     {
+        onInteract();
+     }
+ }
 }

@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     public float dashPower;
     private float dashTimer;
     public UnityEvent onDash;
+    public UnityEvent onDashEnd;
 
 
     private SpriteRenderer sr;
@@ -85,6 +86,7 @@ public class Player : MonoBehaviour
             isDashing = false;
             sr.color = new Color(1,1,1,1);
             rb.useGravity = true;
+            onDashEnd.Invoke();
         }
 
         // apply wind
