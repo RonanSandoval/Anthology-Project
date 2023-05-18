@@ -93,6 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1097169316786888576}
   - component: {fileID: 1097169316786888579}
+  - component: {fileID: 1251572569719537111}
   - component: {fileID: 1097169316786888578}
   m_Layer: 0
   m_Name: Telepoint
@@ -133,6 +134,19 @@ MonoBehaviour:
   toScene: SampleScene
   toIndex: 0
   index: 1
+--- !u!114 &1251572569719537111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1097169316786888583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6f64e5016a71124bbc135a8dafef383, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  needDash: 0
 --- !u!65 &1097169316786888578
 BoxCollider:
   m_ObjectHideFlags: 0

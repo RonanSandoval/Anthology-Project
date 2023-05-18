@@ -110,8 +110,13 @@ public class Player : MonoBehaviour
         spawnPoint = mySpawn;
     }
 
+    public Vector3 getSpawnPoint() {
+        return spawnPoint;
+    }
+
     private void respawn() {
-        transform.position = new Vector3(0,2,0);
+        transform.position = spawnPoint;
+        transform.Translate(new Vector3(0,1,0));
     }
 
     void determineStartSpawnPoint() {
