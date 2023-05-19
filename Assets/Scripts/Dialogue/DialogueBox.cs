@@ -19,6 +19,10 @@ public class DialogueBox : MonoBehaviour
     {
         textBox = GetComponent<Image>();
         clearText();
+
+        Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        onDialogueStart.AddListener(player.pauseMovement);
+        onDialogueEnd.AddListener(player.resumeMovement);
     }
 
     public void startDialogue(DialogueController dc) {

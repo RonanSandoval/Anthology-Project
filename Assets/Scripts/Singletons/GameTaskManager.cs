@@ -1,15 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameTaskManager : MonoBehaviour
 {
     public static GameTaskManager Instance { get; private set; }
 
-    struct Task {
+    public UnityEvent onTaskUpdate;
+    public UnityEvent onTaskComplete;
+
+    public class Task {
         string description;
         int goal;
-        int progress;
+        public int progress;
         int completionTaskIndex;
         GameProgressManager.ProgressFlag completionProgress;
 
@@ -37,6 +41,14 @@ public class GameTaskManager : MonoBehaviour
             return completionProgress;
         }
 
+        public string getDescription() {
+            return description;
+        }
+
+        public string getProgressText() {
+            return progress + " / " + goal; 
+        }
+
     }
 
     List<Task> taskList;
@@ -54,7 +66,7 @@ public class GameTaskManager : MonoBehaviour
         { 
             DontDestroyOnLoad(gameObject);
             Instance = this;
-            currentTaskIndex = -1;
+            currentTaskIndex = 0;
             defineTasks();
         } 
     }
@@ -77,12 +89,19 @@ public class GameTaskManager : MonoBehaviour
 
         // updates for it a task is completed
         if (taskList[taskIndex].isComplete()) {
+            onTaskComplete.Invoke();
             currentTaskIndex = taskList[taskIndex].getCompletionTaskIndex();
-             GameProgressManager.Instance.addProgress(taskList[taskIndex].getCompletionProgress());
+            GameProgressManager.Instance.addProgress(taskList[taskIndex].getCompletionProgress());
+        } else {
+            onTaskUpdate.Invoke();
         }
     }
 
     public void setCurrentTask(int currentTask) {
         currentTaskIndex = currentTask;
+    }
+
+    public Task getCurrentTask() {
+        return taskList[currentTaskIndex];
     }
 }
