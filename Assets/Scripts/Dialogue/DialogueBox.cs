@@ -44,17 +44,17 @@ public class DialogueBox : MonoBehaviour
                 yield return new WaitForSeconds(scrollSpeed);
                 dialogueText.text = script[i].Substring(0, j);
                 // fast-forward text
-                if (Input.GetKey("space") && buttonReleased) {
+                if ((Input.GetKey("space") ||  Input.GetKey(KeyCode.E)) && buttonReleased) {
                     break;
                 }
-                if (Input.GetKeyUp("space")) {
+                if (Input.GetKeyUp("space") ||  Input.GetKeyUp(KeyCode.E)) {
                     buttonReleased = true;
                 }
             }
 
             dialogueText.text = script[i];
 
-            while (!Input.GetKeyDown("space")) {
+            while (!(Input.GetKeyDown("space") ||  Input.GetKeyDown(KeyCode.E))) {
                 yield return null;
             }
 

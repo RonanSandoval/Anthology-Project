@@ -12,6 +12,6 @@ public class Telepoint : Interactable
 
     protected override void onInteract() {
         GameSceneManager.Instance.setSpawnIndex(toIndex);
-        GameSceneManager.Instance.changeScene(toScene);
+        GameSceneManager.Instance.changeSceneFade(toScene);
     }
 }

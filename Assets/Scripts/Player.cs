@@ -37,6 +37,8 @@ public class Player : MonoBehaviour
         canMove = true;
         canDash = GameProgressManager.Instance.checkProgress(GameProgressManager.ProgressFlag.TalkedToDenial);
 
+        GameSceneManager.Instance.onSceneChange.AddListener(pauseMovement);
+
         determineStartSpawnPoint();
     }
 

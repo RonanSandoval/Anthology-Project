@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class GameSceneManager : MonoBehaviour
 {
     public static GameSceneManager Instance { get; private set; }
 
     public int spawnIndex;
+    public string toScene;
+
+    public UnityEvent onSceneChange;
 
     private void Awake() 
     { 
@@ -23,8 +27,18 @@ public class GameSceneManager : MonoBehaviour
         } 
     }
 
+    public void changeSceneFade(string sceneName) {
+        toScene = sceneName;
+        onSceneChange.Invoke();
+    }
+
     public void changeScene(string sceneName) {
-       SceneManager.LoadScene(sceneName); 
+        toScene = sceneName;
+        SceneManager.LoadScene(toScene); 
+    }
+
+    public void changeScene() {
+        SceneManager.LoadScene(toScene);
     }
 
     public void setSpawnIndex(int index) {

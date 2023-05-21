@@ -34,7 +34,7 @@ public class MissionUI : MonoBehaviour
     IEnumerator updateCoroutine() {
         image.color = new Color(1f,1f, 1f, 1f);
 
-        while (image.color.b - 0.5f > 0.01) {
+        while (image.color.b - regularColor.b > 0.01) {
             yield return null;
             image.color = Color.Lerp(image.color, regularColor, Time.deltaTime * 2f);
         }
