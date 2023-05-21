@@ -691,6 +691,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c92a2f8138e9c5448ef16d71a7665a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onTaskUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+  onTaskComplete:
+    m_PersistentCalls:
+      m_Calls: []
   currentTaskIndex: 0
 --- !u!1 &442730927
 GameObject:
@@ -1688,10 +1694,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1097169316786888576, guid: 1e7a88bb45a48ad46ad666bb71a0637f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1097169316786888579, guid: 1e7a88bb45a48ad46ad666bb71a0637f, type: 3}
-      propertyPath: index
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1097169316786888583, guid: 1e7a88bb45a48ad46ad666bb71a0637f, type: 3}

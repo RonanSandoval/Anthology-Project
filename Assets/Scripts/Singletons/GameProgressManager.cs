@@ -6,7 +6,7 @@ public class GameProgressManager : MonoBehaviour
 {
     public static GameProgressManager Instance { get; private set; }
 
-    public enum ProgressFlag {None, TalkedToDenial, FinishedDenial};
+    public enum ProgressFlag {None, TalkedToDenial, CaughtDreamBunnies, FinishedDenial};
 
     public List<ProgressFlag> progressComplete;
 
@@ -25,9 +25,18 @@ public class GameProgressManager : MonoBehaviour
         } 
     }
 
+    void Start() {
+        MessageUI.instance.showTimedMessage("Use ARROW KEYS to Move", 8f);
+    }
+
     public void addProgress(ProgressFlag flag) {
         if (!progressComplete.Contains(flag)) {
             progressComplete.Add(flag);
+        }
+
+        if (flag == ProgressFlag.TalkedToDenial) {
+            MessageUI.instance.showTimedMessage("Press SPACE to dash", 8f);
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().setDash(true);
         }
     }
 

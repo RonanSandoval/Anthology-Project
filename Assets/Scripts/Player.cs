@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
 
     private SpriteRenderer sr;
     private bool canMove;
+    private bool canDash;
     private Vector3 storedDirection;
 
     private Vector3 spawnPoint;
@@ -34,13 +35,14 @@ public class Player : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         
         canMove = true;
+        canDash = GameProgressManager.Instance.checkProgress(GameProgressManager.ProgressFlag.TalkedToDenial);
 
         determineStartSpawnPoint();
     }
 
     void Update() {
         // dash
-        if (canMove && Input.GetKeyDown("space") && dashCooldown <= 0) {
+        if (canDash && canMove && Input.GetKeyDown("space") && dashCooldown <= 0) {
             dashed = true;
             dashCooldown = dashCooldownLength;
             onDash.Invoke();
@@ -112,6 +114,10 @@ public class Player : MonoBehaviour
 
     public Vector3 getSpawnPoint() {
         return spawnPoint;
+    }
+
+    public void setDash(bool myDash) {
+        canDash = myDash;
     }
 
     private void respawn() {

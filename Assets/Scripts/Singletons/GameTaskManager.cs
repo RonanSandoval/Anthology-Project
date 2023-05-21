@@ -46,7 +46,11 @@ public class GameTaskManager : MonoBehaviour
         }
 
         public string getProgressText() {
-            return progress + " / " + goal; 
+            if (goal == 0) {
+                return "";
+            } else {
+                return progress + " / " + goal; 
+            }
         }
 
     }
@@ -76,9 +80,17 @@ public class GameTaskManager : MonoBehaviour
         taskList.Add(
             new Task(
                 "Catch 5 Dream Bunnies",
-                5,
-                -1,
-                GameProgressManager.ProgressFlag.None
+                5, // how many steps
+                1, // next task?
+                GameProgressManager.ProgressFlag.CaughtDreamBunnies
+            )
+        );
+        taskList.Add(
+            new Task(
+                "Talk to Sleepy MC",
+                0, // how many steps
+                2, // next task?
+                GameProgressManager.ProgressFlag.FinishedDenial
             )
         );
     }

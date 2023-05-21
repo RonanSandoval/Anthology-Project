@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 1097169316786888579}
   - component: {fileID: 3997250138519739085}
   - component: {fileID: 1097169316786888578}
+  - component: {fileID: 4545344760202177926}
   m_Layer: 0
   m_Name: Telepoint
   m_TagString: Tele
@@ -133,7 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toScene: Hub
   toIndex: 0
-  index: 1
+  index: 0
 --- !u!114 &3997250138519739085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,6 +161,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5, y: 0.2, z: 5}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4545344760202177926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1097169316786888583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79df7e330a4f92e46b6602513cf99e35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: Go to Hub Area
 --- !u!1 &7634916335249880003
 GameObject:
   m_ObjectHideFlags: 0
