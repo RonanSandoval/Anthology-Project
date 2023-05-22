@@ -9,7 +9,7 @@ public abstract class Touchable : MonoBehaviour
 
     [SerializeField] protected bool needDash;
 
-    protected void OnTriggerEnter(Collider other)
+    protected void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "Player") {
             if (!needDash || other.GetComponent<Player>().isDashing) {

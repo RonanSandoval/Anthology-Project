@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class Collectable : Touchable
 {
-    protected override void onTouch()
-    {
-        GameTaskManager.Instance.updateTask(0, 1);
-        Destroy(gameObject);
+    public string collectID;
+
+    protected virtual void Start() {
+        if (GameCollectManager.Instance.check(collectID)) {
+            Destroy(gameObject);
+        }
+    }
+
+    protected override void onTouch() {
+        GameCollectManager.Instance.collect(collectID);
     }
 }

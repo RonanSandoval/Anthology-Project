@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DreamBunny : Touchable
+public class DreamBunny : Collectable
 {
 
     private GameObject player;
@@ -25,16 +25,18 @@ public class DreamBunny : Touchable
 
     protected override void onTouch()
     {
+        base.onTouch();
         GameTaskManager.Instance.updateTask(0, 1);
         Destroy(gameObject);
     }
 
-    void Start() {
+    protected override void Start() {
         player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody>();
         homePoint = transform.position;
         currentState = State.Idle;
         movePoint = homePoint;
+        base.Start();
     }
 
     void FixedUpdate()
