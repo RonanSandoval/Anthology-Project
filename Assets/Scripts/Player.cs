@@ -171,4 +171,14 @@ public class Player : MonoBehaviour
     public void setWind(Vector3 windVector) {
         wind = windVector;
     }
+
+    public void forceDash(Vector3 dashDirection) {
+        storedDirection = dashDirection.normalized;
+        dashCooldown = dashCooldownLength;
+        onDash.Invoke();
+        rb.velocity = new Vector3((storedDirection * dashPower).x, 0f, (storedDirection * dashPower).z);
+        isDashing = true;
+        sr.color = new Color(1,0,1,1);
+        rb.useGravity = false;
+    }
 }
