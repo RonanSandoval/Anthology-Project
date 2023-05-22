@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 {
     public float speed = 1f; // Speed variable
     private Rigidbody rb; // Set the variable 'rb' as Rigibody
+    private CapsuleCollider collider;
 
     public float dashCooldownLength = 0;
     public float dashCooldown = 0;
@@ -17,6 +18,8 @@ public class Player : MonoBehaviour
     private float dashTimer;
     public UnityEvent onDash;
     public UnityEvent onDashEnd;
+
+    public bool isRespawning = false;
 
 
     private SpriteRenderer sr;
@@ -33,6 +36,7 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         sr = GetComponent<SpriteRenderer>();
+        collider = GetComponent<CapsuleCollider>();
         
         canMove = true;
         canDash = GameProgressManager.Instance.checkProgress(GameProgressManager.ProgressFlag.TalkedToDenial);
@@ -60,6 +64,10 @@ public class Player : MonoBehaviour
             dashTimer = 0;
         }
 
+        if (isRespawning) {
+            respawn();
+        }
+
     }
 
 
@@ -83,7 +91,7 @@ public class Player : MonoBehaviour
             isDashing = true;
             sr.color = new Color(1,0,1,1);
             dashed = false;
-            rb.useGravity =false;
+            rb.useGravity = false;
         }
 
         if (isDashing && (rb.velocity.magnitude < 15 || dashTimer > 0.3f)) {
@@ -94,10 +102,17 @@ public class Player : MonoBehaviour
         }
 
         // apply wind
-        rb.AddForce(wind);
+        if(canMove) {
+            rb.AddForce(wind);
+        }
 
-        if (transform.position.y < -1f) {
-            respawn();
+        // check if fallen
+        if (transform.position.y < -1f && !isRespawning) {
+            isRespawning = true;
+            collider.enabled = false;
+            rb.useGravity = false;
+            rb.velocity = Vector3.zero;
+            pauseMovement();
         }
     }
 
@@ -112,6 +127,7 @@ public class Player : MonoBehaviour
 
     public void setSpawnPoint(Vector3 mySpawn) {
         spawnPoint = mySpawn;
+        spawnPoint.Set(spawnPoint.x, spawnPoint.y + 1, spawnPoint.z);
     }
 
     public Vector3 getSpawnPoint() {
@@ -123,8 +139,17 @@ public class Player : MonoBehaviour
     }
 
     private void respawn() {
-        transform.position = spawnPoint;
-        transform.Translate(new Vector3(0,1,0));
+        if (Vector3.Distance(transform.position, spawnPoint) > 0.5f) {
+            transform.position = Vector3.Lerp(transform.position, spawnPoint, Time.deltaTime * 7);
+        } else {
+            Debug.Log("done respwn");
+            transform.position = spawnPoint;
+            isRespawning = false;
+            collider.enabled = true;
+            rb.useGravity = true;
+            resumeMovement();
+        }
+       
     }
 
     void determineStartSpawnPoint() {
