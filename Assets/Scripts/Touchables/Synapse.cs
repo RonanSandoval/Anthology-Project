@@ -15,7 +15,8 @@ public class Synapse : Touchable
 
     protected override void onTouch()
     {
-        if (player.getSpawnPoint() != transform.position) {
+        if (!player.getSpawnPoint().Equals(new Vector3(transform.position.x, transform.position.y + 1, transform.position.z))) {
+            MessageUI.instance.showTimedMessage("Synapse Activated", 1f);
             player.setSpawnPoint(transform.position);
             Debug.Log("spawn set to" + transform.position);
         }

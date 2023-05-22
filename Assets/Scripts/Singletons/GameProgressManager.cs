@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameProgressManager : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class GameProgressManager : MonoBehaviour
     public enum ProgressFlag {None, TalkedToDenial, CaughtDreamBunnies, FinishedDenial};
 
     public List<ProgressFlag> progressComplete;
+
+    public UnityEvent onAddProgress;
 
     private void Awake() 
     { 
@@ -32,11 +35,12 @@ public class GameProgressManager : MonoBehaviour
     public void addProgress(ProgressFlag flag) {
         if (!progressComplete.Contains(flag)) {
             progressComplete.Add(flag);
-        }
+            onAddProgress.Invoke();
 
-        if (flag == ProgressFlag.TalkedToDenial) {
-            MessageUI.instance.showTimedMessage("Press SPACE to dash", 8f);
-            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().setDash(true);
+            if (flag == ProgressFlag.TalkedToDenial) {
+                MessageUI.instance.showTimedMessage("Press SPACE to dash", 8f);
+                GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().setDash(true);
+            }
         }
     }
 

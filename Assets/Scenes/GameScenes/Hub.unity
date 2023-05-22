@@ -1331,6 +1331,10 @@ PrefabInstance:
       propertyPath: index
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1097169316786888579, guid: eab8b0857c587d646b3ec105e435b567, type: 3}
+      propertyPath: accessFlag
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1097169316786888583, guid: eab8b0857c587d646b3ec105e435b567, type: 3}
       propertyPath: m_Name
       value: Telepoint
