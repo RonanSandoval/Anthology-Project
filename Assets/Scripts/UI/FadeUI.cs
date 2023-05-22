@@ -35,7 +35,7 @@ public class FadeUI : MonoBehaviour
 
     IEnumerator fadeOutCoroutine() {
         while (image.color.a > 0) {
-            image.color = new Color(image.color.r, image.color.g, image.color.b, image.color.a - Time.deltaTime * fadeSpeed);
+            image.color = new Color(image.color.r, image.color.g, image.color.b, image.color.a - Time.deltaTime * fadeSpeed / 2);
             yield return null;
         }
     }

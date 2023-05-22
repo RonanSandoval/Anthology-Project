@@ -29,6 +29,8 @@ public class Player : MonoBehaviour
 
     private Vector3 spawnPoint;
 
+    [SerializeField] ParticleSystem respawnPS;
+
     [SerializeField] private Vector3 wind;
 
     // Start is called before the first frame update
@@ -62,10 +64,6 @@ public class Player : MonoBehaviour
             dashTimer += Time.deltaTime;
         } else {
             dashTimer = 0;
-        }
-
-        if (isRespawning) {
-            respawn();
         }
 
     }
@@ -113,6 +111,7 @@ public class Player : MonoBehaviour
             rb.useGravity = false;
             rb.velocity = Vector3.zero;
             pauseMovement();
+            StartCoroutine(respawn());
         }
     }
 
@@ -138,17 +137,22 @@ public class Player : MonoBehaviour
         canDash = myDash;
     }
 
-    private void respawn() {
-        if (Vector3.Distance(transform.position, spawnPoint) > 0.5f) {
+    IEnumerator respawn() {
+        respawnPS.Play();
+        yield return new WaitForSeconds(0.5f);
+
+        while (Vector3.Distance(transform.position, spawnPoint) > 0.5f) {
             transform.position = Vector3.Lerp(transform.position, spawnPoint, Time.deltaTime * 7);
-        } else {
-            Debug.Log("done respwn");
-            transform.position = spawnPoint;
-            isRespawning = false;
-            collider.enabled = true;
-            rb.useGravity = true;
-            resumeMovement();
+            yield return null;
         }
+
+        Debug.Log("done respwn");
+        transform.position = spawnPoint;
+        isRespawning = false;
+        collider.enabled = true;
+        rb.useGravity = true;
+        resumeMovement();
+        respawnPS.Play();
        
     }
 
