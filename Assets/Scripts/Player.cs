@@ -66,6 +66,15 @@ public class Player : MonoBehaviour
             dashTimer = 0;
         }
 
+        // flip sprite
+        if (storedDirection.x < 0) {
+            sr.flipX = true;
+            transform.GetChild(0).gameObject.transform.localScale = new Vector3(-0.5f,1f,0.5f);
+        } else if (storedDirection.x > 0) {
+            sr.flipX = false;
+            transform.GetChild(0).gameObject.transform.localScale = new Vector3(0.5f,1f,0.5f);
+        }
+
     }
 
 
