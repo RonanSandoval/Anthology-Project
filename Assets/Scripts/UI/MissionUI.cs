@@ -18,12 +18,17 @@ public class MissionUI : MonoBehaviour
     {
         GameTaskManager.Instance.onTaskUpdate.AddListener(taskUpdate);
         GameTaskManager.Instance.onTaskComplete.AddListener(taskComplete);
+        GameTaskManager.Instance.onNewTask.AddListener(taskBegin);
 
         image = GetComponent<Image>();
         regularColor = image.color;
         rt = GetComponent<RectTransform>();
 
-        updateMissionText();
+        rt.anchoredPosition3D = new Vector3(-250f, -17f, 0f);
+
+        if (GameTaskManager.Instance.checkTaskExists()) {
+            taskBegin();
+        }
     }
 
     public void taskUpdate() {
@@ -57,8 +62,6 @@ public class MissionUI : MonoBehaviour
 
         image.color = new Color(0.50f, 0.40f, 0.10f, 0.9f);
 
-        yield return new WaitForSeconds(0.5f);
-
         while (rt.anchoredPosition3D.x > -249f) {
             rt.anchoredPosition3D = Vector3.Lerp(rt.anchoredPosition3D, new Vector3(-250f, -17f, 0f), Time.deltaTime * 10f);
             yield return null;
@@ -66,7 +69,9 @@ public class MissionUI : MonoBehaviour
 
         image.color = regularColor;
 
-        taskBegin();
+        if (GameTaskManager.Instance.checkTaskExists()) {
+            taskBegin();
+        }
     }
 
     public void taskBegin() {

@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
 
     private SpriteRenderer sr;
     private bool canMove;
-    private bool canDash;
+    [SerializeField] private bool canDash;
     private Vector3 storedDirection;
 
     private Vector3 spawnPoint;
@@ -168,13 +168,17 @@ public class Player : MonoBehaviour
     void determineStartSpawnPoint() {
         foreach(GameObject teleObject in GameObject.FindGameObjectsWithTag("Tele"))
         {
-            if(teleObject.GetComponent<Telepoint>().index == GameSceneManager.Instance.spawnIndex)
-            {
-                transform.position = teleObject.transform.position;
-                transform.Translate(new Vector3(0,1,0));
-                break;
-            }
+            try {
+                if(teleObject.GetComponent<Telepoint>().index == GameSceneManager.Instance.spawnIndex)
+                {
+                    transform.position = teleObject.transform.position;
+                    transform.Translate(new Vector3(0,1,0));
+                    return;
+                }
+            } catch {}
         }
+        
+        transform.position = new Vector3(0,2,0);
     }
 
     public void setWind(Vector3 windVector) {

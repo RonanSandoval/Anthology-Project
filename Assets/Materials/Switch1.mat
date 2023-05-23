@@ -96,7 +96,7 @@ Material:
     m_Ints: []
     m_Floats:
     - Dither_Size: 2
-    - Opacity: 0.20000002
+    - Opacity: 0.2
     - _AlphaClip: 0
     - _Blend: 1
     - _BumpScale: 1

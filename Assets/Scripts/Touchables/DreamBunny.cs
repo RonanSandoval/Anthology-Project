@@ -26,7 +26,7 @@ public class DreamBunny : Collectable
     protected override void onTouch()
     {
         base.onTouch();
-        GameTaskManager.Instance.updateTask(0, 1);
+        GameTaskManager.Instance.updateTask(GameTaskManager.TaskName.Bunnies, 1);
         Destroy(gameObject);
     }
 

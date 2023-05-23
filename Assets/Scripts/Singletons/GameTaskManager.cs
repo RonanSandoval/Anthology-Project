@@ -9,19 +9,22 @@ public class GameTaskManager : MonoBehaviour
 
     public UnityEvent onTaskUpdate;
     public UnityEvent onTaskComplete;
+    public UnityEvent onNewTask;
+
+    public enum TaskName {None, NoUpdate, Bunnies, DenialTalk}
 
     public class Task {
         string description;
         int goal;
         public int progress;
-        int completionTaskIndex;
+        GameTaskManager.TaskName completionTask;
         GameProgressManager.ProgressFlag completionProgress;
 
-        public Task(string description, int goal, int completionTaskIndex, GameProgressManager.ProgressFlag completionProgress) {
+        public Task(string description, int goal, TaskName completionTask, GameProgressManager.ProgressFlag completionProgress) {
             this.description = description;
             this.goal = goal;
             this.progress = 0;
-            this.completionTaskIndex = completionTaskIndex;
+            this.completionTask = completionTask;
             this.completionProgress = completionProgress; 
         }
 
@@ -33,8 +36,8 @@ public class GameTaskManager : MonoBehaviour
             return progress >= goal;
         }
 
-        public int getCompletionTaskIndex() {
-            return completionTaskIndex;
+        public GameTaskManager.TaskName getCompletionTask() {
+            return completionTask;
         }
 
         public GameProgressManager.ProgressFlag getCompletionProgress() {
@@ -55,8 +58,8 @@ public class GameTaskManager : MonoBehaviour
 
     }
 
-    List<Task> taskList;
-    [SerializeField] int currentTaskIndex; // -1 means no current task
+    Dictionary<TaskName, Task> taskList;
+    [SerializeField] TaskName currentTask;
 
     private void Awake() 
     { 
@@ -70,50 +73,58 @@ public class GameTaskManager : MonoBehaviour
         { 
             DontDestroyOnLoad(gameObject);
             Instance = this;
-            currentTaskIndex = 0;
+            currentTask = TaskName.None;
             defineTasks();
         } 
     }
 
     void defineTasks() {
-        taskList = new List<Task>();
-        taskList.Add(
+        taskList = new Dictionary<TaskName, Task>();
+        taskList.Add( TaskName.Bunnies,
             new Task(
                 "Catch 5 Dream Bunnies",
-                5, // how many steps
-                1, // next task?
+                1, // how many steps
+                TaskName.DenialTalk, // next task?
                 GameProgressManager.ProgressFlag.CaughtDreamBunnies
             )
         );
-        taskList.Add(
+        taskList.Add( TaskName.DenialTalk,
             new Task(
                 "Talk to Sleepy MC",
                 0, // how many steps
-                2, // next task?
+                TaskName.None, // next task?
                 GameProgressManager.ProgressFlag.FinishedDenial
             )
         );
     }
 
-    public void updateTask(int taskIndex, int taskChange) {
-        Debug.Log("task updated: " + taskIndex + " , " + taskChange);
-        taskList[taskIndex].updateTaskProgress(taskChange);
+    public void updateTask(TaskName taskName, int taskChange) {
+        Debug.Log("task updated: " + taskName + " , " + taskChange);
+        taskList[taskName].updateTaskProgress(taskChange);
 
         // updates for it a task is completed
-        if (taskList[taskIndex].isComplete()) {
+        if (taskList[taskName].isComplete()) {
             onTaskComplete.Invoke();
-            currentTaskIndex = taskList[taskIndex].getCompletionTaskIndex();
-            GameProgressManager.Instance.addProgress(taskList[taskIndex].getCompletionProgress());
+            currentTask = taskList[taskName].getCompletionTask();
+            GameProgressManager.Instance.addProgress(taskList[taskName].getCompletionProgress());
         } else {
             onTaskUpdate.Invoke();
         }
     }
 
-    public void setCurrentTask(int currentTask) {
-        currentTaskIndex = currentTask;
+    public void setCurrentTask(TaskName currentTask) {
+        this.currentTask = currentTask;
     }
 
     public Task getCurrentTask() {
-        return taskList[currentTaskIndex];
+        return taskList[currentTask];
+    }
+
+    public TaskName getCurrentTaskName() {
+        return currentTask;
+    }
+
+    public bool checkTaskExists() {
+        return currentTask != TaskName.None;
     }
 }

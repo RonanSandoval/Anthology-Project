@@ -9,7 +9,8 @@ public class Dialogue : MonoBehaviour
 
     public GameProgressManager.ProgressFlag dialogueFlag;
     public GameProgressManager.ProgressFlag flagAfterCompletion;
-    public int taskIndexAfterCompletion;
+    public GameTaskManager.TaskName taskCompleted;
+    public GameTaskManager.TaskName newTaskAfterCompletion;
 
     public bool dialogueIsAvailable() {
         return GameProgressManager.Instance.checkProgress(dialogueFlag);

@@ -33,7 +33,7 @@ public class DialogueBox : MonoBehaviour
 
     private IEnumerator scrollDialogue(Dialogue dialogue) {
         // prevents dialogue from automatically fast-forwarding
-        bool buttonReleased = true;
+        bool buttonReleased = false;
 
         string[] script = dialogue.script;
         string[] speaker = dialogue.speaker;
@@ -64,7 +64,13 @@ public class DialogueBox : MonoBehaviour
         // on completion of dialogue
         GameProgressManager.Instance.addProgress(dialogue.flagAfterCompletion);
         GameStateManager.Instance.setCurrentState(GameStateManager.GameState.Exploring);
-        GameTaskManager.Instance.setCurrentTask(dialogue.taskIndexAfterCompletion);
+        if (dialogue.taskCompleted != GameTaskManager.TaskName.None) {
+            GameTaskManager.Instance.updateTask(dialogue.taskCompleted, 1);
+        }
+        else if (dialogue.newTaskAfterCompletion != GameTaskManager.TaskName.NoUpdate && GameTaskManager.Instance.getCurrentTaskName() != dialogue.newTaskAfterCompletion) {
+            GameTaskManager.Instance.setCurrentTask(dialogue.newTaskAfterCompletion);
+            GameTaskManager.Instance.onNewTask.Invoke();
+        }
         clearText();
         onDialogueEnd.Invoke();
     }

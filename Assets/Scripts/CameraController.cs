@@ -13,6 +13,7 @@ public class CameraController : MonoBehaviour
 
     // Update is called once per frame
     void Start() {
+        playerObject = GameObject.FindGameObjectWithTag("Player");
         transform.position = playerObject.transform.position;
     }
 
@@ -21,7 +22,7 @@ public class CameraController : MonoBehaviour
         cameraSin += Time.deltaTime * cameraSinFrequency;
         float yOffset = Mathf.Sin(cameraSin) * cameraSinAmplitude;
 
-        Vector3 targetPosition = new Vector3(playerObject.transform.position.x, playerObject.transform.position.y + 2 + yOffset, playerObject.transform.position.z - 7);
+        Vector3 targetPosition = new Vector3(playerObject.transform.position.x, playerObject.transform.position.y + 3 + yOffset, playerObject.transform.position.z - 9);
         transform.position = Vector3.Lerp(transform.position, targetPosition, cameraSpeed * Time.deltaTime);
     }
 }
