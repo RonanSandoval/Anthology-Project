@@ -37,6 +37,7 @@ public class MissionUI : MonoBehaviour
     }
 
     IEnumerator updateCoroutine() {
+        rt.anchoredPosition = new Vector3(0f, -17f, 0f);
         image.color = new Color(1f,1f, 1f, 1f);
 
         while (image.color.b - regularColor.b > 0.01) {

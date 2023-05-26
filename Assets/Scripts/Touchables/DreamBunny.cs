@@ -6,6 +6,7 @@ public class DreamBunny : Collectable
 {
 
     private GameObject player;
+    SoundController sc;
 
     [SerializeField] float distanceThreshold;
     [SerializeField] float speed;
@@ -14,6 +15,7 @@ public class DreamBunny : Collectable
     [SerializeField] float homeRadius;
     private Vector3 homePoint;
     private Vector3 movePoint;
+    private bool startedRunning;
 
     private Rigidbody rb;
     [SerializeField] BoxCollider collisionBox;
@@ -24,18 +26,34 @@ public class DreamBunny : Collectable
     State currentState;
 
     protected override void onTouch()
-    {
-        base.onTouch();
-        GameTaskManager.Instance.updateTask(GameTaskManager.TaskName.Bunnies, 1);
+    {  
+
+            base.onTouch();
+            sc.playSoundWorldly(0);
+            sc.playRandomizedSound();
+            GameTaskManager.Instance.updateTask(GameTaskManager.TaskName.Bunnies, 1);
+
+        StartCoroutine(disappear());
+    }
+
+    IEnumerator disappear() {
+        foreach(Collider c in GetComponents<Collider>()) {
+            c.enabled = false;
+        }
+        GetComponentInChildren<SpriteRenderer>().enabled = false;
+        yield return new WaitForSeconds(0.5f);
+
         Destroy(gameObject);
     }
 
     protected override void Start() {
         player = GameObject.FindGameObjectWithTag("Player");
+        sc = GetComponent<SoundController>();
         rb = GetComponent<Rigidbody>();
         homePoint = transform.position;
         currentState = State.Idle;
         movePoint = homePoint;
+        startedRunning = false;
         base.Start();
     }
 
@@ -71,10 +89,16 @@ public class DreamBunny : Collectable
     void determineState() {
         if (Vector3.Distance(transform.position, player.transform.position) < distanceThreshold) {
             currentState = State.Running;
+            if (!startedRunning) {
+                sc.playRandomizedSound();
+            }
+            startedRunning = true;
         } else if (currentState == State.Running && Vector3.Distance(transform.position, player.transform.position) >= distanceThreshold) {
             currentState = State.Waiting;
         } else if (currentState == State.Waiting && waitCounter <= 0) {
             currentState = State.Returning;
+            startedRunning = false;
+            sc.playRandomizedSound();
         } else if (currentState == State.Returning && Vector3.Distance(transform.position, homePoint) - 1 < homeRadius) {
             currentState = State.Idle;
         }

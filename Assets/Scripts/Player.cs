@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class Player : MonoBehaviour
 
 
     private SpriteRenderer sr;
-    private bool canMove;
+    [SerializeField] bool canMove;
     [SerializeField] private bool canDash;
     private Vector3 storedDirection;
 
@@ -33,24 +34,33 @@ public class Player : MonoBehaviour
 
     [SerializeField] private Vector3 wind;
 
+    SoundController sc;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         sr = GetComponent<SpriteRenderer>();
         collider = GetComponent<CapsuleCollider>();
+        sc = GetComponent<SoundController>();
         
         canMove = true;
-        canDash = GameProgressManager.Instance.checkProgress(GameProgressManager.ProgressFlag.TalkedToDenial);
+        canDash = true;
+        //canDash = GameProgressManager.Instance.checkProgress(GameProgressManager.ProgressFlag.TalkedToDenial);
 
         GameSceneManager.Instance.onSceneChange.AddListener(pauseMovement);
+
+        if (SceneManager.GetActiveScene().name == "Anger") {
+                GameProgressManager.Instance.addProgress(GameProgressManager.ProgressFlag.AngerTeleport);
+        }
 
         determineStartSpawnPoint();
     }
 
     void Update() {
         // dash
-        if (canDash && canMove && Input.GetKeyDown("space") && dashCooldown <= 0) {
+        if (canDash && canMove && dashKeys() && dashCooldown <= 0) {
+            Debug.Log("dashed!");
             dashed = true;
             dashCooldown = dashCooldownLength;
             onDash.Invoke();
@@ -77,6 +87,9 @@ public class Player : MonoBehaviour
 
     }
 
+    bool dashKeys() {
+        return Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Z);
+    }
 
     void FixedUpdate()
     {
@@ -99,6 +112,7 @@ public class Player : MonoBehaviour
             sr.color = new Color(1,0,1,1);
             dashed = false;
             rb.useGravity = false;
+            sc.playRandomizedSound();
         }
 
         if (isDashing && (rb.velocity.magnitude < 15 || dashTimer > 0.3f)) {
@@ -148,6 +162,8 @@ public class Player : MonoBehaviour
 
     IEnumerator respawn() {
         respawnPS.Play();
+        sc.playSound(0);
+        sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0.5f);
         yield return new WaitForSeconds(0.5f);
 
         while (Vector3.Distance(transform.position, spawnPoint) > 0.5f) {
@@ -155,7 +171,8 @@ public class Player : MonoBehaviour
             yield return null;
         }
 
-        Debug.Log("done respwn");
+        sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1f);
+        sc.playSound(1);
         transform.position = spawnPoint;
         isRespawning = false;
         collider.enabled = true;
@@ -179,6 +196,7 @@ public class Player : MonoBehaviour
         }
         
         transform.position = new Vector3(0,2,0);
+        spawnPoint = new Vector3(0,2,0);
     }
 
     public void setWind(Vector3 windVector) {
@@ -193,5 +211,18 @@ public class Player : MonoBehaviour
         isDashing = true;
         sr.color = new Color(1,0,1,1);
         rb.useGravity = false;
+        sc.playRandomizedSound();
+    }
+
+    public IEnumerator teleport() {
+        canMove = false;
+
+        Vector3 floatPoint = new Vector3(transform.position.x, transform.position.y + 4, transform.position.z);
+        while (Vector3.Distance(transform.position, floatPoint) > 0.5f) {
+            sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, sr.color.a - Time.deltaTime * 2);
+            transform.position = Vector3.Lerp(transform.position, floatPoint, Time.deltaTime * 4);
+            yield return null;
+        }
+
     }
 }

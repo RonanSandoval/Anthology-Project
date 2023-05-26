@@ -7,7 +7,20 @@ public class GameProgressManager : MonoBehaviour
 {
     public static GameProgressManager Instance { get; private set; }
 
-    public enum ProgressFlag {None, TalkedToDenial, CaughtDreamBunnies, FinishedDenial};
+    public enum ProgressFlag {
+        None,
+        TalkedToDenial,
+        CaughtDreamBunnies,
+        FinishedDenial,
+        BrokeRocks,
+        FinishedAnger,
+        ObtainedPapers,
+        FinishedBargaining,
+        ObtainedFear,
+        FinishedDepression,
+        ReadyForFinale,
+        AngerTeleport
+        };
 
     public List<ProgressFlag> progressComplete;
 

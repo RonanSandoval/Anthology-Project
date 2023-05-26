@@ -32,7 +32,6 @@ public class DialogueController : Interactable
     }
 
     protected override void onInteract() {
-
         GameStateManager.Instance.setCurrentState(GameStateManager.GameState.Talking);
         selectDialogue();
         dialogueBox.startDialogue(this);

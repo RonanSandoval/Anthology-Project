@@ -15,6 +15,20 @@ public class CameraController : MonoBehaviour
     void Start() {
         playerObject = GameObject.FindGameObjectWithTag("Player");
         transform.position = playerObject.transform.position;
+
+        foreach(GameObject teleObject in GameObject.FindGameObjectsWithTag("Tele"))
+        {
+            try {
+                if(teleObject.GetComponent<Telepoint>().index == GameSceneManager.Instance.spawnIndex)
+                {
+                    transform.position = teleObject.transform.position;
+                    transform.Translate(new Vector3(0,1,0));
+                    return;
+                }
+            } catch {}
+        }
+        
+        transform.position = new Vector3(0,2,0);
     }
 
     void Update()

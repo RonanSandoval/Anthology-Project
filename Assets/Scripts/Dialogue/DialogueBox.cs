@@ -3,24 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using System.Text.RegularExpressions;
 
 public class DialogueBox : MonoBehaviour
 {
     public Text dialogueText;
     public Text speakerText;
     private Image textBox;
+    [SerializeField] private Image spinner;
 
     public float scrollSpeed;
 
     public UnityEvent onDialogueStart;
     public UnityEvent onDialogueEnd;
 
+    SoundController sc;
+
     void Start()
     {
         textBox = GetComponent<Image>();
+        spinner.enabled = false;
         clearText();
 
         Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        sc = GetComponent<SoundController>();
         onDialogueStart.AddListener(player.pauseMovement);
         onDialogueEnd.AddListener(player.resumeMovement);
     }
@@ -28,6 +34,7 @@ public class DialogueBox : MonoBehaviour
     public void startDialogue(DialogueController dc) {
         textBox.enabled = true;   
         onDialogueStart.Invoke();
+        sc.playSound(0);
         StartCoroutine(scrollDialogue(dc.selectedDialogue));
     }
 
@@ -41,8 +48,11 @@ public class DialogueBox : MonoBehaviour
         for (int i = 0; i < script.Length; i++) {
             speakerText.text = speaker[i];
             for (int j = 0; j < script[i].Length; j++) {
+                dialogueText.text = processText(script[i].Substring(0, j));
+                if (dialogueText.text.EndsWith(".") || dialogueText.text.EndsWith("?") || dialogueText.text.EndsWith("!")) {
+                    yield return new WaitForSeconds(scrollSpeed * 10);
+                }
                 yield return new WaitForSeconds(scrollSpeed);
-                dialogueText.text = script[i].Substring(0, j);
                 // fast-forward text
                 if ((Input.GetKey("space") ||  Input.GetKey(KeyCode.E)) && buttonReleased) {
                     break;
@@ -52,13 +62,16 @@ public class DialogueBox : MonoBehaviour
                 }
             }
 
-            dialogueText.text = script[i];
+            dialogueText.text = processText(script[i]);
+            spinner.enabled = true;
 
             while (!(Input.GetKeyDown("space") ||  Input.GetKeyDown(KeyCode.E))) {
                 yield return null;
             }
 
+            sc.playSoundWorldly(1);
             buttonReleased = false;
+            spinner.enabled = false;
         }
 
         // on completion of dialogue
@@ -79,5 +92,27 @@ public class DialogueBox : MonoBehaviour
         textBox.enabled = false;
         dialogueText.text = "";
         speakerText.text = "";
+    }
+
+    private string processText(string input) {
+        Regex yellowText = new Regex("#");  
+        if (yellowText.Matches(input).Count % 2 != 0) {
+            input = input + "#";
+        }
+        while(yellowText.Matches(input).Count > 0) {
+            input = yellowText.Replace(input, "<color=yellow>", 1);
+            input = yellowText.Replace(input, "</color>", 1);
+        }
+
+        Regex cyanText = new Regex(@"\*");  
+        if (cyanText.Matches(input).Count % 2 != 0) {
+            input = input + "*";
+        }
+        while(cyanText.Matches(input).Count > 0) {
+            input = cyanText.Replace(input, "<color=cyan>", 1);
+            input = cyanText.Replace(input, "</color>", 1);
+        }
+
+        return input;
     }
 }

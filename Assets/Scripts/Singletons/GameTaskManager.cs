@@ -11,7 +11,19 @@ public class GameTaskManager : MonoBehaviour
     public UnityEvent onTaskComplete;
     public UnityEvent onNewTask;
 
-    public enum TaskName {None, NoUpdate, Bunnies, DenialTalk}
+    public enum TaskName {
+        None,
+        NoUpdate,
+        Bunnies,
+        DenialTalk,
+        Rocks,
+        AngerTalk,
+        Paper,
+        BargainingTalk,
+        Fear,
+        DepressionTalk,
+        Finale
+        }
 
     public class Task {
         string description;
@@ -83,17 +95,73 @@ public class GameTaskManager : MonoBehaviour
         taskList.Add( TaskName.Bunnies,
             new Task(
                 "Catch 5 Dream Bunnies",
-                1, // how many steps
+                5, // how many steps
                 TaskName.DenialTalk, // next task?
                 GameProgressManager.ProgressFlag.CaughtDreamBunnies
             )
         );
         taskList.Add( TaskName.DenialTalk,
             new Task(
-                "Talk to Sleepy MC",
+                "Talk to Sleepy Cypress",
                 0, // how many steps
                 TaskName.None, // next task?
                 GameProgressManager.ProgressFlag.FinishedDenial
+            )
+        );
+        taskList.Add( TaskName.Rocks,
+            new Task(
+                "Break 15 Rocks",
+                30, // how many steps
+                TaskName.AngerTalk, // next task?
+                GameProgressManager.ProgressFlag.ObtainedPapers
+            )
+        );
+        taskList.Add( TaskName.AngerTalk,
+            new Task(
+                "Talk to Sour Cypress",
+                0, // how many steps
+                TaskName.None, // next task?
+                GameProgressManager.ProgressFlag.FinishedAnger
+            )
+        );
+        taskList.Add( TaskName.Paper,
+            new Task(
+                "Obtain 30 Pieces of Paper",
+                30, // how many steps
+                TaskName.BargainingTalk, // next task?
+                GameProgressManager.ProgressFlag.ObtainedPapers
+            )
+        );
+        taskList.Add( TaskName.BargainingTalk,
+            new Task(
+                "Talk to Starry-Eyed Cypress",
+                0, // how many steps
+                TaskName.None, // next task?
+                GameProgressManager.ProgressFlag.FinishedBargaining
+            )
+        );
+        taskList.Add( TaskName.Fear,
+            new Task(
+                "Find the Fear",
+                1, // how many steps
+                TaskName.DepressionTalk, // next task?
+                GameProgressManager.ProgressFlag.ObtainedPapers
+            )
+        );
+        taskList.Add( TaskName.DepressionTalk,
+            new Task(
+                "Talk to Sad Cypress",
+                0, // how many steps
+                TaskName.None, // next task?
+                GameProgressManager.ProgressFlag.FinishedDepression
+            )
+        );
+        taskList.Add( TaskName.Finale,
+            new Task(
+                "Begin the Ceremony",
+                0, // how many steps
+                TaskName.None, // next task?
+                GameProgressManager.ProgressFlag.None
             )
         );
     }
@@ -101,6 +169,7 @@ public class GameTaskManager : MonoBehaviour
     public void updateTask(TaskName taskName, int taskChange) {
         Debug.Log("task updated: " + taskName + " , " + taskChange);
         taskList[taskName].updateTaskProgress(taskChange);
+        currentTask = taskName;
 
         // updates for it a task is completed
         if (taskList[taskName].isComplete()) {
