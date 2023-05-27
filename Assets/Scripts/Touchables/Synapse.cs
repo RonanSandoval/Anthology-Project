@@ -1,19 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Synapse : Touchable
 {
     Player player;
     SoundController sc;
-    ParticleSystem ps;
+    [SerializeField] ParticleSystem ps;
+    [SerializeField] ParticleSystem psConstant;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         sc = GetComponent<SoundController>();
-        ps = GetComponentInChildren<ParticleSystem>();
+    }
+
+    void Update() {
+        if (player.getSpawnPoint().Equals(new Vector3(transform.position.x, transform.position.y + 1, transform.position.z))) {
+             psConstant.Play();
+        } else {
+            psConstant.Stop();
+        }
     }
 
 

@@ -9,13 +9,16 @@ public class DialogueController : Interactable
 
     public DialogueBox dialogueBox;
 
-    
+    [SerializeField] bool noFlip;
+
+    SpriteRenderer sr;
 
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
         dialogueBox = GameObject.Find("Dialogue Box").GetComponent<DialogueBox>();
+        sr = GetComponent<SpriteRenderer>();
 
     }
 
@@ -32,6 +35,10 @@ public class DialogueController : Interactable
     }
 
     protected override void onInteract() {
+        if (!noFlip) {
+            sr.flipX = GameObject.FindGameObjectWithTag("Player").transform.position.x < transform.position.x;
+        }
+
         GameStateManager.Instance.setCurrentState(GameStateManager.GameState.Talking);
         selectDialogue();
         dialogueBox.startDialogue(this);

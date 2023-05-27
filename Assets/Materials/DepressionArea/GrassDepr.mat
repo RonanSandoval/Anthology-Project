@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GrassAnger
+  m_Name: GrassDepr
   m_Shader: {fileID: 4800000, guid: 45df8cff8683d2f4686b5150fe0483ac, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -24,17 +24,17 @@ Material:
     - _AmbientStrength: 0.5
     - _BladeCurve: 2
     - _BladeForward: 0.38
-    - _GrassHeight: 2.56
+    - _GrassHeight: 4
     - _GrassWidth: 0.06
     - _MaxDist: 60
     - _MinDist: 40
     - _Rad: 0.6
     - _Radius: 0.3
-    - _RandomHeight: 0.56
+    - _RandomHeight: 0.1
     - _Strength: 5
-    - _WindSpeed: 100
-    - _WindStrength: 0.05
+    - _WindSpeed: 150
+    - _WindStrength: 0.3
     m_Colors:
-    - _BottomColor: {r: 0.754717, g: 0.47435534, b: 0.15948732, a: 1}
-    - _TopColor: {r: 1, g: 0.8814874, b: 0, a: 1}
+    - _BottomColor: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 1}
+    - _TopColor: {r: 0.3301887, g: 0.3301887, b: 0.3301887, a: 1}
   m_BuildTextureStacks: []

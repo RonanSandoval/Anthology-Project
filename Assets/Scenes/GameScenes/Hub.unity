@@ -41450,7 +41450,7 @@ Transform:
   m_GameObject: {fileID: 365185141}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 91.8, y: -3.1503, z: 8.81}
-  m_LocalScale: {x: 1.5, y: 6.9438524, z: 1.5}
+  m_LocalScale: {x: 2, y: 6.9438524, z: 2}
   m_Children: []
   m_Father: {fileID: 1063621253}
   m_RootOrder: 20
@@ -41810,7 +41810,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disappear: 0
-  flag: 11
+  flag: 14
   disappearEffect: {fileID: 0}
 --- !u!1001 &479228303
 PrefabInstance:
@@ -42134,7 +42134,7 @@ Transform:
   m_GameObject: {fileID: 673659032}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 96.32, y: -3.1503, z: 14.4}
-  m_LocalScale: {x: 1.5, y: 6.9438524, z: 1.5}
+  m_LocalScale: {x: 2, y: 6.9438524, z: 2}
   m_Children: []
   m_Father: {fileID: 1063621253}
   m_RootOrder: 21
@@ -43273,6 +43273,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedDialogue: {fileID: 0}
   dialogueBox: {fileID: 0}
+  noFlip: 0
 --- !u!136 &1142355002
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -45006,7 +45007,7 @@ Transform:
   m_GameObject: {fileID: 1837974766}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -25.3827, y: -3.1503, z: -58.653}
-  m_LocalScale: {x: 12.633751, y: 6.9438524, z: 1.494}
+  m_LocalScale: {x: 12.633751, y: 6.9438524, z: 2.2}
   m_Children: []
   m_Father: {fileID: 1063621253}
   m_RootOrder: 18
@@ -45418,7 +45419,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3997250138519739085, guid: 1e7a88bb45a48ad46ad666bb71a0637f, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e7a88bb45a48ad46ad666bb71a0637f, type: 3}

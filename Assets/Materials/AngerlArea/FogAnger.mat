@@ -81,7 +81,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Amplitude: 2
+    - Amplitude: 4
     - Fog_Density: 4
     - _AlphaClip: 0
     - _Blend: 0

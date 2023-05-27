@@ -113,6 +113,15 @@ public class DialogueBox : MonoBehaviour
             input = cyanText.Replace(input, "</color>", 1);
         }
 
+        Regex greyText = new Regex("&");  
+        if (greyText.Matches(input).Count % 2 != 0) {
+            input = input + "&";
+        }
+        while(greyText.Matches(input).Count > 0) {
+            input = greyText.Replace(input, "<color=silver>", 1);
+            input = greyText.Replace(input, "</color>", 1);
+        }
+
         return input;
     }
 }

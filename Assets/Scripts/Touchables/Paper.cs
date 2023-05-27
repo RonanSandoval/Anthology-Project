@@ -4,11 +4,20 @@ using UnityEngine;
 
 public class Paper : Collectable
 {
+    SoundController sc;
+    [SerializeField] GameObject disappearEffect;
+
+    protected override void Start() {
+        sc = GetComponent<SoundController>();
+        base.Start();
+    }
+
     protected override void onTouch()
     {
-        GameTaskManager.Instance.updateTask(0, 1);
-        Destroy(gameObject);
-
+        sc.playSoundWorldly(0);
+        GameTaskManager.Instance.updateTask(GameTaskManager.TaskName.Paper, 1);
+        Instantiate(disappearEffect, transform.position, Quaternion.identity);
         base.onTouch();
+        Destroy(gameObject);
     }
 }

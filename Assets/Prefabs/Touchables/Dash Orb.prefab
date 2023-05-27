@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 782324126251647239}
   - component: {fileID: 782324126251647238}
   - component: {fileID: 782324126251647233}
+  - component: {fileID: 6356202247388963909}
   m_Layer: 0
   m_Name: Dash Orb
   m_TagString: Untagged
@@ -196,6 +197,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   needDash: 0
   dashDirection: 0
+--- !u!114 &6356202247388963909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782324126251647235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b473f9f98d447b946b0023931ad1c8e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amplitude: 0.5
+  frequency: 3
 --- !u!1 &3522319122797847426
 GameObject:
   m_ObjectHideFlags: 0

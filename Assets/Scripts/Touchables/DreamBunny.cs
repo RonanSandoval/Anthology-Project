@@ -20,6 +20,8 @@ public class DreamBunny : Collectable
     private Rigidbody rb;
     [SerializeField] BoxCollider collisionBox;
 
+    [SerializeField] GameObject disappearEffect;
+
     private float waitCounter;
 
     enum State {Idle, Running, Waiting, Returning}
@@ -32,6 +34,7 @@ public class DreamBunny : Collectable
             sc.playSoundWorldly(0);
             sc.playRandomizedSound();
             GameTaskManager.Instance.updateTask(GameTaskManager.TaskName.Bunnies, 1);
+            Instantiate(disappearEffect, transform.position, Quaternion.identity);
 
         StartCoroutine(disappear());
     }
