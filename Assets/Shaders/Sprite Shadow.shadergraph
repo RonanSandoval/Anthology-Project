@@ -691,10 +691,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 29.00006103515625,
-            "y": 298.0,
-            "width": 208.0,
-            "height": 302.0
+            "x": -92.00000762939453,
+            "y": 247.20001220703126,
+            "width": 208.00001525878907,
+            "height": 301.5999755859375
         }
     },
     "m_Slots": [
@@ -1096,6 +1096,8 @@
         "m_GuidSerialized": "019e15da-1817-42b8-92ec-9229399fbe2a"
     },
     "m_Name": "Sprite",
+    "m_DefaultRefNameVersion": 0,
+    "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Texture2D_97f832e3db3744f1aa1394cae928aff4",
     "m_OverrideReferenceName": "_MainTex",
     "m_GeneratePropertyBlock": true,

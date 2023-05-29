@@ -39,6 +39,7 @@ public class DialogueController : Interactable
             sr.flipX = GameObject.FindGameObjectWithTag("Player").transform.position.x < transform.position.x;
         }
 
+        GameObject.Find("Main Camera").GetComponent<CameraController>().setCameraPartner(gameObject);
         GameStateManager.Instance.setCurrentState(GameStateManager.GameState.Talking);
         selectDialogue();
         dialogueBox.startDialogue(this);

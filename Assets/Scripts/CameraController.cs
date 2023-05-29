@@ -5,6 +5,8 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public GameObject playerObject;
+    private GameObject partnerObject;
+    private bool onPartner = false;
     public float cameraSpeed = 5f;
 
     private float cameraSin = 0f;
@@ -36,7 +38,24 @@ public class CameraController : MonoBehaviour
         cameraSin += Time.deltaTime * cameraSinFrequency;
         float yOffset = Mathf.Sin(cameraSin) * cameraSinAmplitude;
 
-        Vector3 targetPosition = new Vector3(playerObject.transform.position.x, playerObject.transform.position.y + 3 + yOffset, playerObject.transform.position.z - 9);
+        Vector3 targetPosition;
+        if (GameStateManager.Instance.checkState(GameStateManager.GameState.Exploring)) {
+            targetPosition = new Vector3(playerObject.transform.position.x, playerObject.transform.position.y + 3 + yOffset, playerObject.transform.position.z - 9);
+        } else if (!onPartner) {
+            targetPosition = new Vector3(playerObject.transform.position.x, playerObject.transform.position.y + 2 + yOffset, playerObject.transform.position.z - 5);
+        } else {
+            targetPosition = new Vector3(partnerObject.transform.position.x, partnerObject.transform.position.y + 2 + yOffset, partnerObject.transform.position.z - 5);
+        }
+        
+
         transform.position = Vector3.Lerp(transform.position, targetPosition, cameraSpeed * Time.deltaTime);
+    }
+
+    public void setCameraPartner(GameObject partner) {
+        partnerObject = partner;
+    }
+
+    public void setOnPartner(bool setting) {
+        onPartner = setting;
     }
 }

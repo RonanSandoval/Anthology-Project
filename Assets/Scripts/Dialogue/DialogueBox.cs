@@ -47,6 +47,7 @@ public class DialogueBox : MonoBehaviour
 
         for (int i = 0; i < script.Length; i++) {
             speakerText.text = speaker[i];
+            GameObject.Find("Main Camera").GetComponent<CameraController>().setOnPartner(!speaker[i].Equals("Cypress")); 
             for (int j = 0; j < script[i].Length; j++) {
                 dialogueText.text = processText(script[i].Substring(0, j));
                 if (dialogueText.text.EndsWith(".") || dialogueText.text.EndsWith("?") || dialogueText.text.EndsWith("!")) {

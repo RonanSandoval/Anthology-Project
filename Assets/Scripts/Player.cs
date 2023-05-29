@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     private float dashTimer;
     public UnityEvent onDash;
     public UnityEvent onDashEnd;
+    public UnityEvent onRespawn;
 
     public bool isRespawning = false;
 
@@ -88,7 +89,7 @@ public class Player : MonoBehaviour
     }
 
     bool dashKeys() {
-        return Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Z);
+        return Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Z);
     }
 
     void FixedUpdate()
@@ -162,6 +163,7 @@ public class Player : MonoBehaviour
 
     IEnumerator respawn() {
         respawnPS.Play();
+        onRespawn.Invoke();
         sc.playSound(0);
         sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0.5f);
         yield return new WaitForSeconds(0.5f);
