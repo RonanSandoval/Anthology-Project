@@ -110,10 +110,10 @@ public class GameTaskManager : MonoBehaviour
         );
         taskList.Add( TaskName.Rocks,
             new Task(
-                "Break 15 Rocks",
-                30, // how many steps
+                "Find a Gift in the Crystals",
+                15, // how many steps
                 TaskName.AngerTalk, // next task?
-                GameProgressManager.ProgressFlag.ObtainedPapers
+                GameProgressManager.ProgressFlag.BrokeRocks
             )
         );
         taskList.Add( TaskName.AngerTalk,

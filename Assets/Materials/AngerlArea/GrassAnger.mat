@@ -35,6 +35,6 @@ Material:
     - _WindSpeed: 100
     - _WindStrength: 0.05
     m_Colors:
-    - _BottomColor: {r: 0.754717, g: 0.47435534, b: 0.15948732, a: 1}
-    - _TopColor: {r: 1, g: 0.8814874, b: 0, a: 1}
+    - _BottomColor: {r: 0.7529412, g: 0.49467823, b: 0.16078429, a: 1}
+    - _TopColor: {r: 1, g: 0.62406105, b: 0, a: 1}
   m_BuildTextureStacks: []
