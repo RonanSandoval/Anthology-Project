@@ -5993,13 +5993,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   script:
-  - Wow! You finished collecting all the bunnies!
-  - Thank you so much!
-  - There.
+  - Well, I broke all the red crystals here.
+  - Excellent! So, did you find a gift for Aspen?
+  - No, There was nothing inside the crystals. Just... more crystal.
+  - There was... *nothing*? huh... that's so... PERFECT!
+  - What?
+  - Yes!! Gwahahaha! I'm going to give Aspen *NOTHING* for the ceremony! They'd never
+    expect it!
+  - You know how much Aspen hates joke gifts! Remember that time with their cousin
+    and the stink bomb-
+  - I don't CARE! I'm SOUR CYPRESS, not SYMPATHETIC CYPRESS. Idiot.
+  - Wow... okay.
+  - Anyway, I'm heading back to hub. You better start the ceremony soon!!!
   speaker:
-  - Sleepy MC
-  - Sleepy MC
-  - Sleepy MC
+  - Cypress
+  - Sour Cypress
+  - Cypress
+  - Sour Cypress
+  - Cypress
+  - Sour Cypress
+  - Cypress
+  - Sour Cypress
+  - Cypress
+  - Sour Cypress
   dialogueFlag: 5
   flagAfterCompletion: 6
   taskCompleted: 5
@@ -6891,7 +6907,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   script:
-  - '&DEFENDENT: Aspen for always buying soon-to-expire groceries.&'
+  - '&DEFENDENT: Aspen for always leaving sculpting tools all over the house.&'
   - '&VERDICT: Guilty of being silly. Punished with a trip to the amusement park
     with Aspen.&'
   - Truly the perfect punishment.
@@ -44426,18 +44442,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   script:
-  - yaaaaaaawn.
-  - ' Ah, Cypress. I see you''re finally back.'
-  - You remember me, right? I'm Sleepy Cypress. You know, your drowsy counterpart.
-  - But, I think i'm too tired right now. Could you help me catch #5 Dream Bunnies#?
-  - They run away if you get too close, but, if you *dash*, I think you'll be able
-    to capture them.
+  - GAAAAH! This is such a PAIN! I just want to PUNCH SOMETHING!
+  - Uh, Sour Cypres? You okay there, buddy?
+  - I'm just SO ANNOYED RIGHT NOW! You can't even imagine.
+  - Oh I can imagine. I'm literally you, remember?
+  - Enough with the metaphysics! I need to find a gift for Aspen, but this place
+    SUCKS! GAH! There's just a bunch of stupid *red crystals*!
+  - Well, red crystals could make a nice gift! Like jewelry or-
+  - Wait, I got it! YES! I bet, that if we BREAK those crystals, there'll be a gift
+    inside!
+  - ...sure buddy. Sure.
+  - Man. if only I had a way to break those crystals...
+  - Leave it to me!
   speaker:
-  - ???
-  - ???
-  - Sleepy Cypress
-  - Sleepy Cypress
-  - Sleepy Cypress
+  - Sour Cypress
+  - Cypress
+  - Sour Cypress
+  - Cypress
+  - Sour Cypress
+  - Cypress
+  - Sour Cypress
+  - Cypress
+  - Sour Cypress
+  - Cypress
   dialogueFlag: 0
   flagAfterCompletion: 4
   taskCompleted: 0
@@ -44652,13 +44679,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   script:
-  - Hey again!
-  - We already met!
-  - Haha.
+  - Well? Did you break all the crystals?
+  - No, not yet.
+  - Well what are you waiting for? Idiot.
+  - ...Why am I so mean to myself...
   speaker:
-  - Sleepy MC
-  - Sleepy MC
-  - Sleepy MC
+  - Sour Cypress
+  - Cypress
+  - Sour Cypress
+  - Cypress
   dialogueFlag: 4
   flagAfterCompletion: 0
   taskCompleted: 0

@@ -5525,13 +5525,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   script:
-  - Wow! You finished collecting all the bunnies!
-  - Thank you so much!
-  - There.
+  - What is this? Yes, I can sense it... you've collected all of the *pieces of paper*!
+  - Here you go. How did they even get so... nevermind, I don't want to know.
+  - Thank you so much! Now give me a moment to stitch it back together...
+  - Voila! Here it is! The scrapbook, titled *"30 Destinations To Travel To, Sorted
+    Alphabetically"*. I still remember spending a weekend crafting this with Aspen.
+  - Our plans are spectacular! Visiting the bustling streets of Osaka, canoeing through
+    the caves of Halong bay...
+  - 'Aspen would get mountains of inspiration for their sculptures, and we''d get
+    to try out the world''s cuisine! '
+  - Pretty lofty goals given the salaries of chefs and artists...
+  - Oh don't be so pessimistic, Cypress! This is our hopes and wishes encapsulated
+    in a book. I think this is the perfect gift for Aspen.
+  - You know what, you're right! Aspen will love this *scrapbook*.
+  - I knew you'd agree! Well, I shall be waiting at the location of ceremony. Ta-ta!
   speaker:
-  - Sleepy MC
-  - Sleepy MC
-  - Sleepy MC
+  - Starry-Eyed Cypress
+  - Cypress
+  - Starry-Eyed Cypress
+  - Starry-Eyed Cypress
+  - Starry-Eyed Cypress
+  - Starry-Eyed Cypress
+  - Cypress
+  - Starry-Eyed Cypress
+  - Cypress
+  - Starry-Eyed Cypress
   dialogueFlag: 8
   flagAfterCompletion: 9
   taskCompleted: 7
@@ -10407,7 +10425,8 @@ MonoBehaviour:
   script:
   - '&Cypress Wish Number 302: Ask out Aspen.&'
   - '&Progress: 100% COMPLETED&'
-  - Well, this isn't completely accurate. Suprisingly, Aspen asked me out.
+  - Well, this isn't completely accurate. Suprisingly, Aspen asked me out! They were
+    such a nervous wreck, haha...
   speaker:
   - 
   - 
@@ -64096,17 +64115,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   script:
-  - yaaaaaaawn.
-  - ' Ah, Cypress. I see you''re finally back.'
-  - You remember me, right? I'm Sleepy Cypress. You know, your drowsy counterpart.
-  - But, I think i'm too tired right now. Could you help me catch #5 Dream Bunnies#?
-  - They run away if you get too close, but, if you *dash*, I think you'll be able
-    to capture them.
+  - Oh, woe is me! This is truly the dilemna to end all dilemnas. Whatever shall
+    I do!
+  - Did you like that? I was acting! I can also siiiiiiing~ I've got the chops to
+    become a broadway musical star, right?
+  - ...was my theatre obsession always this embarassing?
+  - Anyhoo, it has come to my attention that today is the day of the ceremony! Oh
+    my beloved, how precious thou art~
+  - Truly, meeting Aspen has been a wish come true. And I have the perfect gift to
+    give!
+  - Yes yes, a gift that truly represents both us and Aspen! However, there has been
+    a little mishap, and the gift has been torn to shreds!
+  - '*30 pieces of paper* that make up the gift are scattered through this fair land,
+    and I need help gathering them. Will you help, honourable Cypress?'
+  - Why do you talk like this? But, yes, I'll gather them up.
+  - Many thanks. I shall wait here and continue to practice my performance~
   speaker:
-  - ???
+  - Starry-Eyed Cypress
+  - Starry-Eyed Cypress
+  - Cypress
   - Starry-Eyed Cypress
   - Starry-Eyed Cypress
   - Starry-Eyed Cypress
+  - Starry-Eyed Cypress
+  - Cypress
   - Starry-Eyed Cypress
   dialogueFlag: 0
   flagAfterCompletion: 7
@@ -64322,13 +64354,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   script:
-  - Hey again!
-  - We already met!
-  - Haha.
+  - Alas, I can sense that you have yet to obtain all *30 pieces of paper*. A tragedy!
+    Will this dilemna ever be solved?
+  - ...
   speaker:
-  - Sleepy MC
-  - Sleepy MC
-  - Sleepy MC
+  - Starry-Eyed Cypress
+  - Cypress
   dialogueFlag: 7
   flagAfterCompletion: 0
   taskCompleted: 0
