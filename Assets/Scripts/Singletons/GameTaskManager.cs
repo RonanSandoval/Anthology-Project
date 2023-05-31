@@ -142,8 +142,8 @@ public class GameTaskManager : MonoBehaviour
         );
         taskList.Add( TaskName.Fear,
             new Task(
-                "Find the Fear",
-                1, // how many steps
+                "Find the Source of Wind",
+                0, // how many steps
                 TaskName.DepressionTalk, // next task?
                 GameProgressManager.ProgressFlag.ObtainedPapers
             )

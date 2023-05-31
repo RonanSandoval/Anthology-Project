@@ -73,6 +73,16 @@ public class MissionUI : MonoBehaviour
         if (GameTaskManager.Instance.checkTaskExists()) {
             taskBegin();
         }
+
+        if (GameProgressManager.Instance.checkProgress(GameProgressManager.ProgressFlag.FinishedDenial) &&
+            GameProgressManager.Instance.checkProgress(GameProgressManager.ProgressFlag.FinishedAnger) &&
+            GameProgressManager.Instance.checkProgress(GameProgressManager.ProgressFlag.FinishedBargaining) &&
+            GameProgressManager.Instance.checkProgress(GameProgressManager.ProgressFlag.FinishedDepression)) {
+            
+            GameProgressManager.Instance.addProgress(GameProgressManager.ProgressFlag.ReadyForFinale);
+            GameTaskManager.Instance.setCurrentTask(GameTaskManager.TaskName.Finale);
+            taskBegin();
+        }
     }
 
     public void taskBegin() {

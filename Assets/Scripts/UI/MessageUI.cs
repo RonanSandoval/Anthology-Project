@@ -37,7 +37,7 @@ public class MessageUI : MonoBehaviour
         messageText.color = new Color(messageText.color.r, messageText.color.g, messageText.color.b, 0);
         image.color = new Color(image.color.r, image.color.g, image.color.b, 0);
 
-        while (messageText.color.a < 1) {
+        while (messageText.color.a < 1f) {
             messageText.color = new Color(messageText.color.r, messageText.color.g, messageText.color.b, messageText.color.a + Time.deltaTime * appearSpeed);
             image.color = new Color(image.color.r, image.color.g, image.color.b, image.color.a + (Time.deltaTime * boxOpacity * appearSpeed));
             yield return null;
@@ -62,7 +62,7 @@ public class MessageUI : MonoBehaviour
         messageText.color = new Color(messageText.color.r, messageText.color.g, messageText.color.b, 0);
         image.color = new Color(image.color.r, image.color.g, image.color.b, 0);
 
-        while (messageText.color.a < 1) {
+        while (messageText.color.a < 1f) {
             messageText.color = new Color(messageText.color.r, messageText.color.g, messageText.color.b, messageText.color.a + Time.deltaTime * appearSpeed);
             image.color = new Color(image.color.r, image.color.g, image.color.b, image.color.a + (Time.deltaTime * boxOpacity * appearSpeed));
             yield return null;

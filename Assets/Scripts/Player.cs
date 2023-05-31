@@ -45,11 +45,18 @@ public class Player : MonoBehaviour
         collider = GetComponent<CapsuleCollider>();
         sc = GetComponent<SoundController>();
         
-        canMove = true;
+        if (GameProgressManager.Instance.checkProgress(GameProgressManager.ProgressFlag.GameStart)) {
+            canMove = true;
+        } else {
+            canMove = false;
+            sr.enabled = false;
+        }
+
         canDash = true;
         //canDash = GameProgressManager.Instance.checkProgress(GameProgressManager.ProgressFlag.TalkedToDenial);
 
         GameSceneManager.Instance.onSceneChange.AddListener(pauseMovement);
+        GameProgressManager.Instance.onAddProgress.AddListener(checkGameStart);
 
         if (SceneManager.GetActiveScene().name == "Anger") {
                 GameProgressManager.Instance.addProgress(GameProgressManager.ProgressFlag.AngerTeleport);
@@ -226,5 +233,14 @@ public class Player : MonoBehaviour
             yield return null;
         }
 
+    }
+
+    void checkGameStart() {
+        if (!sr.enabled && GameProgressManager.Instance.checkProgress(GameProgressManager.ProgressFlag.GameStart)) {
+            canMove = true;
+            sr.enabled = true;
+            respawnPS.Play();
+            sc.playSound(0);
+        }
     }
 }

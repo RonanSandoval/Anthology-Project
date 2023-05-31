@@ -22,7 +22,8 @@ public class GameProgressManager : MonoBehaviour
         ObtainedFear,
         FinishedDepression,
         ReadyForFinale,
-        AngerTeleport
+        AngerTeleport,
+        GameStart
         };
 
     public List<ProgressFlag> progressComplete;
@@ -44,8 +45,15 @@ public class GameProgressManager : MonoBehaviour
         } 
     }
 
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            addProgress(ProgressFlag.GameStart);
+        }
+    }
+
     void Start() {
-        MessageUI.instance.showTimedMessage("Use ARROW KEYS to Move", 8f);
+        MessageUI.instance.showMessage("Press E to Start");
     }
 
     public void addProgress(ProgressFlag flag) {
@@ -54,8 +62,12 @@ public class GameProgressManager : MonoBehaviour
             onAddProgress.Invoke();
 
             if (flag == ProgressFlag.TalkedToDenial) {
-                MessageUI.instance.showTimedMessage("Press SPACE to dash", 8f);
+                MessageUI.instance.showTimedMessage("Press Z or SPACE to dash", 8f);
                 GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().setDash(true);
+            }
+
+            if (flag == ProgressFlag.GameStart) {
+                MessageUI.instance.showTimedMessage("Use ARROW KEYS or WASD to Move", 8f);
             }
         }
     }

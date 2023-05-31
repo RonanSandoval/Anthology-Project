@@ -39,5 +39,11 @@ public abstract class Interactable : MonoBehaviour
      {
         onInteract();
      }
+
+    if (GameStateManager.Instance.currentState == GameStateManager.GameState.Talking) {
+        keyIndicator.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+    } else {
+            keyIndicator.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+    }
  }
 }
