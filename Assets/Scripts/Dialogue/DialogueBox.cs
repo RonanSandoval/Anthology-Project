@@ -19,6 +19,8 @@ public class DialogueBox : MonoBehaviour
 
     SoundController sc;
 
+    bool skipped;
+
     void Start()
     {
         textBox = GetComponent<Image>();
@@ -38,6 +40,12 @@ public class DialogueBox : MonoBehaviour
         StartCoroutine(scrollDialogue(dc.selectedDialogue));
     }
 
+    void Update() {
+        if (Input.GetKeyDown("space") ||  Input.GetKeyDown(KeyCode.E)) {
+            skipped = true;
+        }
+    }
+
     private IEnumerator scrollDialogue(Dialogue dialogue) {
         // prevents dialogue from automatically fast-forwarding
         bool buttonReleased = false;
@@ -47,6 +55,8 @@ public class DialogueBox : MonoBehaviour
 
         for (int i = 0; i < script.Length; i++) {
             speakerText.text = speaker[i];
+            buttonReleased = false;
+            skipped = false;
             GameObject.Find("Main Camera").GetComponent<CameraController>().setOnPartner(!speaker[i].Equals("Cypress")); 
             for (int j = 0; j < script[i].Length; j++) {
                 dialogueText.text = processText(script[i].Substring(0, j));
@@ -55,9 +65,11 @@ public class DialogueBox : MonoBehaviour
                 }
                 yield return new WaitForSeconds(scrollSpeed);
                 // fast-forward text
-                if ((Input.GetKey("space") ||  Input.GetKey(KeyCode.E)) && buttonReleased) {
+                if (skipped && buttonReleased) {
+                    buttonReleased = false;
                     break;
                 }
+
                 if (Input.GetKeyUp("space") ||  Input.GetKeyUp(KeyCode.E)) {
                     buttonReleased = true;
                 }
@@ -65,6 +77,13 @@ public class DialogueBox : MonoBehaviour
 
             dialogueText.text = processText(script[i]);
             spinner.enabled = true;
+
+            yield return null;
+
+            while (Input.GetKey("space") ||  Input.GetKey(KeyCode.E)) {
+                yield return null;
+                Debug.Log("waiting");
+            }
 
             while (!(Input.GetKeyDown("space") ||  Input.GetKeyDown(KeyCode.E))) {
                 yield return null;
