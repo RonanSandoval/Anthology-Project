@@ -96,10 +96,10 @@ public class Player : MonoBehaviour
 
         // flip sprite
         if (storedDirection.x < 0) {
-            sr.flipX = true;
+            sr.flipX = false;
             transform.GetChild(0).gameObject.transform.localScale = new Vector3(-0.5f,1f,0.5f);
         } else if (storedDirection.x > 0) {
-            sr.flipX = false;
+            sr.flipX = true;
             transform.GetChild(0).gameObject.transform.localScale = new Vector3(0.5f,1f,0.5f);
         }
 
@@ -219,7 +219,7 @@ public class Player : MonoBehaviour
             } catch {}
         }
         
-        transform.position = new Vector3(0,2,0);
+        transform.position = new Vector3(0,5,0);
         spawnPoint = new Vector3(0,2,0);
     }
 
@@ -233,7 +233,7 @@ public class Player : MonoBehaviour
         onDash.Invoke();
         rb.velocity = new Vector3((storedDirection * dashPower).x, 0f, (storedDirection * dashPower).z);
         isDashing = true;
-        sr.color = new Color(1,0,1,1);
+        sr.color = new Color(1,1,1,1);
         rb.useGravity = false;
         sc.playRandomizedSound();
     }

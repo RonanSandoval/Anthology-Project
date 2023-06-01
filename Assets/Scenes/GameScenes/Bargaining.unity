@@ -5535,9 +5535,13 @@ MonoBehaviour:
   - 'Aspen would get mountains of inspiration for their sculptures, and we''d get
     to try out the world''s cuisine! '
   - Pretty lofty goals given the salaries of chefs and artists...
-  - Oh don't be so pessimistic, Cypress! This is our hopes and wishes encapsulated
-    in a book. I think this is the perfect gift for Aspen.
-  - You know what, you're right! Aspen will love this *scrapbook*.
+  - Oh don't be so pessimistic, Cypress! The world is our oyster or whatever! We
+    can make what we want out of it!
+  - I don't know... I feel like, there are some things in the world you just can't
+    control.
+  - ...I know that. But it still doesn't hurt to daydream. This is our hopes and
+    wishes encapsulated in a book. I think this is the perfect gift for Aspen!
+  - Yeah, I guess you're right. Aspen will love this *scrapbook*.
   - I knew you'd agree! Well, I shall be waiting at the location of ceremony. Ta-ta!
   speaker:
   - Starry-Eyed Cypress
@@ -5545,6 +5549,8 @@ MonoBehaviour:
   - Starry-Eyed Cypress
   - Starry-Eyed Cypress
   - Starry-Eyed Cypress
+  - Starry-Eyed Cypress
+  - Cypress
   - Starry-Eyed Cypress
   - Cypress
   - Starry-Eyed Cypress
@@ -11290,6 +11296,10 @@ PrefabInstance:
     - target: {fileID: 8357888365923320376, guid: c6fa537da61eb784b9921ceb229ed1c3, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8357888365923320381, guid: c6fa537da61eb784b9921ceb229ed1c3, type: 3}
+      propertyPath: wind.y
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 8357888365923320382, guid: c6fa537da61eb784b9921ceb229ed1c3, type: 3}
       propertyPath: m_RootOrder

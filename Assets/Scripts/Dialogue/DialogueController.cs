@@ -36,7 +36,7 @@ public class DialogueController : Interactable
 
     protected override void onInteract() {
         if (!noFlip) {
-            sr.flipX = GameObject.FindGameObjectWithTag("Player").transform.position.x < transform.position.x;
+            sr.flipX = GameObject.FindGameObjectWithTag("Player").transform.position.x > transform.position.x;
         }
 
         GameObject.Find("Main Camera").GetComponent<CameraController>().setCameraPartner(gameObject);

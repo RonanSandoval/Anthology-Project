@@ -3843,7 +3843,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3063281843820534655, guid: 1d5d9d3f53cf3884daf26fbc83d8f10e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 45.8
+      value: 62.3
       objectReference: {fileID: 0}
     - target: {fileID: 3063281843820534655, guid: 1d5d9d3f53cf3884daf26fbc83d8f10e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3851,7 +3851,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3063281843820534655, guid: 1d5d9d3f53cf3884daf26fbc83d8f10e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 87.6
+      value: 82.1
       objectReference: {fileID: 0}
     - target: {fileID: 3063281843820534655, guid: 1d5d9d3f53cf3884daf26fbc83d8f10e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6003,7 +6003,7 @@ MonoBehaviour:
   - You know how much Aspen hates joke gifts! Remember that time with their cousin
     and the stink bomb-
   - I don't CARE! I'm SOUR CYPRESS, not SYMPATHETIC CYPRESS. Idiot.
-  - Wow... okay.
+  - Wow... okay. I always forget how... Irrational Sour Cypress can be...
   - Anyway, I'm heading back to hub. You better start the ceremony soon!!!
   speaker:
   - Cypress
@@ -6907,8 +6907,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   script:
-  - '&DEFENDENT: Aspen for always leaving sculpting tools all over the house.&'
-  - '&VERDICT: Guilty of being silly. Punished with a trip to the amusement park
+  - '&DEFENDENT: Aspen for always leaving sculpting tools all over the house. And
+    for beating me at Mario Kart every time.&'
+  - '&VERDICT: Guilty of being annoying Punished with a trip to the amusement park
     with Aspen.&'
   - Truly the perfect punishment.
   speaker:
@@ -11367,6 +11368,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8357888365923320377, guid: c6fa537da61eb784b9921ceb229ed1c3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 8502035231812026756, guid: b08db244cd44d1944929afbe92360f70, type: 3}
     - target: {fileID: 8357888365923320382, guid: c6fa537da61eb784b9921ceb229ed1c3, type: 3}
       propertyPath: m_RootOrder
       value: 1

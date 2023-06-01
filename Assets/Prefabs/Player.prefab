@@ -5090,7 +5090,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 4
+      scalar: 6
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -5143,7 +5143,7 @@ ParticleSystem:
     startSizeY:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 3
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -5302,7 +5302,7 @@ ParticleSystem:
     startRotationY:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 3.1415925
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -5409,7 +5409,7 @@ ParticleSystem:
     maxNumParticles: 1000
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 1
-    rotation3D: 0
+    rotation3D: 1
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
@@ -9786,8 +9786,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 630e4851dc0fbc142b787d10111f6902, type: 3}
-  m_Color: {r: 1, g: 0.89056605, b: 0.89056605, a: 1}
+  m_Sprite: {fileID: 8502035231812026756, guid: b08db244cd44d1944929afbe92360f70, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -9843,7 +9843,7 @@ MonoBehaviour:
   dashCooldownLength: 0.5
   dashCooldown: 0
   isDashing: 0
-  dashPower: 60
+  dashPower: 70
   onDash:
     m_PersistentCalls:
       m_Calls:
@@ -9881,7 +9881,7 @@ MonoBehaviour:
   canMove: 0
   canDash: 0
   respawnPS: {fileID: 3039051990481726038}
-  wind: {x: 0, y: -10, z: 0}
+  wind: {x: 0, y: -20, z: 0}
 --- !u!82 &1965025696
 AudioSource:
   m_ObjectHideFlags: 0
