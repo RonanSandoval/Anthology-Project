@@ -45,4 +45,11 @@ public class DialogueController : Interactable
         dialogueBox.startDialogue(this);
     }
 
+    public void dialogueFinale() {
+        GameObject.Find("Main Camera").GetComponent<CameraController>().setCameraPartner(gameObject);
+        GameStateManager.Instance.setCurrentState(GameStateManager.GameState.Talking);
+        selectDialogue();
+        dialogueBox.startDialogue(this);
+    }
+
 }

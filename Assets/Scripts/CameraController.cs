@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CameraController : MonoBehaviour
 {
@@ -44,7 +45,11 @@ public class CameraController : MonoBehaviour
         } else if (!onPartner) {
             targetPosition = new Vector3(playerObject.transform.position.x, playerObject.transform.position.y + 2 + yOffset, playerObject.transform.position.z - 5);
         } else {
-            targetPosition = new Vector3(partnerObject.transform.position.x, partnerObject.transform.position.y + 2 + yOffset, partnerObject.transform.position.z - 5);
+            try {
+                targetPosition = new Vector3(partnerObject.transform.position.x, partnerObject.transform.position.y + 2 + yOffset, partnerObject.transform.position.z - 5);
+            } catch {
+                targetPosition = transform.position;
+            }
         }
         
 

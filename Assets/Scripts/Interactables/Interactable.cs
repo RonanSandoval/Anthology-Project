@@ -35,7 +35,7 @@ public abstract class Interactable : MonoBehaviour
      public void Update()
  {
       if (Input.GetKeyDown(KeyCode.E) && touchingPlayer
-      && GameStateManager.Instance.checkState(GameStateManager.GameState.Exploring))
+      && !GameStateManager.Instance.checkState(GameStateManager.GameState.Talking))
      {
         onInteract();
      }

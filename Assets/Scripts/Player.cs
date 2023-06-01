@@ -66,7 +66,7 @@ public class Player : MonoBehaviour
         }
 
         GameSceneManager.Instance.onSceneChange.AddListener(pauseMovement);
-        GameProgressManager.Instance.onAddProgress.AddListener(checkGameStart);
+        GameProgressManager.Instance.onAddProgress.AddListener(checkAfterProgress);
 
         if (SceneManager.GetActiveScene().name == "Anger") {
                 GameProgressManager.Instance.addProgress(GameProgressManager.ProgressFlag.AngerTeleport);
@@ -250,12 +250,22 @@ public class Player : MonoBehaviour
 
     }
 
-    void checkGameStart() {
+    void checkAfterProgress() {
         if (!sr.enabled && GameProgressManager.Instance.checkProgress(GameProgressManager.ProgressFlag.GameStart)) {
             canMove = true;
             sr.enabled = true;
             respawnPS.Play();
             sc.playSound(0);
         }
+
+        if (GameProgressManager.Instance.checkProgress(GameProgressManager.ProgressFlag.EndingAcceptance)) {
+            sr.enabled = false;
+            canMove = false;
+            canDash = false;
+            respawnPS.Play();
+
+            Destroy(GetComponentInChildren<Light>());
+        }
+        
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using System.Text.RegularExpressions;
+using UnityEngine.SceneManagement;
 
 public class DialogueBox : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class DialogueBox : MonoBehaviour
 
     public UnityEvent onDialogueStart;
     public UnityEvent onDialogueEnd;
+
+    DialogueController currentController;
 
     SoundController sc;
 
@@ -37,6 +40,7 @@ public class DialogueBox : MonoBehaviour
         textBox.enabled = true;   
         onDialogueStart.Invoke();
         sc.playSound(0);
+        currentController = dc;
         StartCoroutine(scrollDialogue(dc.selectedDialogue));
     }
 
@@ -57,7 +61,14 @@ public class DialogueBox : MonoBehaviour
             speakerText.text = speaker[i];
             buttonReleased = false;
             skipped = false;
-            GameObject.Find("Main Camera").GetComponent<CameraController>().setOnPartner(!speaker[i].Equals("Cypress")); 
+            
+            if (SceneManager.GetActiveScene().name == "Finale") {
+                GameObject.Find("Main Camera").GetComponent<CameraController>().setOnPartner(true);
+                GameObject.Find("Main Camera").GetComponent<CameraController>().setCameraPartner(GameObject.Find(speaker[i]));
+            } else {
+                GameObject.Find("Main Camera").GetComponent<CameraController>().setOnPartner(!speaker[i].Equals("Cypress"));
+            } 
+            
             for (int j = 0; j < script[i].Length; j++) {
                 dialogueText.text = processText(script[i].Substring(0, j));
                 if (dialogueText.text.EndsWith(".") || dialogueText.text.EndsWith("?") || dialogueText.text.EndsWith("!")) {
@@ -96,7 +107,12 @@ public class DialogueBox : MonoBehaviour
 
         // on completion of dialogue
         GameProgressManager.Instance.addProgress(dialogue.flagAfterCompletion);
-        GameStateManager.Instance.setCurrentState(GameStateManager.GameState.Exploring);
+
+        if (SceneManager.GetActiveScene().name != "Finale") {
+            GameStateManager.Instance.setCurrentState(GameStateManager.GameState.Exploring);
+            onDialogueEnd.Invoke();
+        }
+
         if (dialogue.taskCompleted != GameTaskManager.TaskName.None) {
             GameTaskManager.Instance.updateTask(dialogue.taskCompleted, 1);
         }
@@ -105,7 +121,10 @@ public class DialogueBox : MonoBehaviour
             GameTaskManager.Instance.onNewTask.Invoke();
         }
         clearText();
-        onDialogueEnd.Invoke();
+
+        if (SceneManager.GetActiveScene().name == "Finale" && !GameProgressManager.Instance.checkProgress(GameProgressManager.ProgressFlag.EndingAcceptance)) {
+            currentController.dialogueFinale();
+        }
     }
 
     private void clearText() {

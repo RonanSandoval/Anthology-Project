@@ -23,7 +23,12 @@ public class GameProgressManager : MonoBehaviour
         FinishedDepression,
         ReadyForFinale,
         AngerTeleport,
-        GameStart
+        GameStart,
+        EndingDenial,
+        EndingAnger,
+        EndingBargaining,
+        EndingDepression,
+        EndingAcceptance
         };
 
     public List<ProgressFlag> progressComplete;
