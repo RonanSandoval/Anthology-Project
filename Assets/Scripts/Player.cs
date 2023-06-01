@@ -37,13 +37,18 @@ public class Player : MonoBehaviour
 
     SoundController sc;
 
+    Animator anim;
+    Color defaultColor;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         sr = GetComponent<SpriteRenderer>();
+        defaultColor = sr.color;
         collider = GetComponent<CapsuleCollider>();
         sc = GetComponent<SoundController>();
+        anim = GetComponent<Animator>();
         
         if (GameProgressManager.Instance.checkProgress(GameProgressManager.ProgressFlag.GameStart)) {
             canMove = true;
@@ -54,6 +59,11 @@ public class Player : MonoBehaviour
 
         canDash = true;
         //canDash = GameProgressManager.Instance.checkProgress(GameProgressManager.ProgressFlag.TalkedToDenial);
+
+        if (GameStateManager.Instance.checkState(GameStateManager.GameState.Finale)) {
+            canMove = false;
+            canDash = false;
+        }
 
         GameSceneManager.Instance.onSceneChange.AddListener(pauseMovement);
         GameProgressManager.Instance.onAddProgress.AddListener(checkGameStart);
@@ -105,6 +115,9 @@ public class Player : MonoBehaviour
         Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
         if (input.magnitude > 0.1f) {
             storedDirection = input;
+            anim.SetBool("Moving", true);
+        } else {
+            anim.SetBool("Moving", false);
         }
 
         if (canMove && !isDashing) {
@@ -117,7 +130,7 @@ public class Player : MonoBehaviour
         if (dashed) {
             rb.velocity = new Vector3((storedDirection * dashPower).x, 0f, (storedDirection * dashPower).z);
             isDashing = true;
-            sr.color = new Color(1,0,1,1);
+            sr.color = new Color(1,1,1,1);
             dashed = false;
             rb.useGravity = false;
             sc.playRandomizedSound();
@@ -125,10 +138,12 @@ public class Player : MonoBehaviour
 
         if (isDashing && (rb.velocity.magnitude < 15 || dashTimer > 0.3f)) {
             isDashing = false;
-            sr.color = new Color(1,1,1,1);
+            sr.color = defaultColor;
             rb.useGravity = true;
             onDashEnd.Invoke();
         }
+
+        anim.SetBool("Dashing", isDashing);
 
         // apply wind
         if(canMove) {

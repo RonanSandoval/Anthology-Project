@@ -6,7 +6,7 @@ public class GameStateManager : MonoBehaviour
 {
     public static GameStateManager Instance { get; private set; }
 
-    public enum GameState {Exploring, Talking};
+    public enum GameState {Exploring, Talking, Finale};
     public GameState currentState;
 
     private void Awake() 

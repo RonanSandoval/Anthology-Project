@@ -4909,8 +4909,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 766471292}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 0.19999999, y: 0.19999999, z: 1}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_Children: []
   m_Father: {fileID: 5500339123993190311}
   m_RootOrder: 1
@@ -7296,6 +7296,18 @@ PrefabInstance:
     - target: {fileID: 6386653821388241360, guid: 734b6234ee581eb49a63017882e691cb, type: 3}
       propertyPath: m_Name
       value: Paper
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386653821388241373, guid: 734b6234ee581eb49a63017882e691cb, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386653821388241373, guid: 734b6234ee581eb49a63017882e691cb, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386653821388241373, guid: 734b6234ee581eb49a63017882e691cb, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6386653821388241373, guid: 734b6234ee581eb49a63017882e691cb, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -13537,7 +13549,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6386653821388241375, guid: 734b6234ee581eb49a63017882e691cb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.72
+      value: -2.91
       objectReference: {fileID: 0}
     - target: {fileID: 6386653821388241375, guid: 734b6234ee581eb49a63017882e691cb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -64185,8 +64197,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8ab8485de2e91654c88006ad5f8e8eb1, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.8569753, a: 1}
+  m_Sprite: {fileID: 21300000, guid: dc1a58dd1d411634ea631c8a5a495a3f, type: 3}
+  m_Color: {r: 1, g: 0.9694141, b: 0.94716984, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -64222,7 +64234,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.4, y: 1, z: 0.2}
+  m_Size: {x: 1, y: 3, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &5500339123993190311
 Transform:
@@ -64232,8 +64244,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5500339123993190312}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 73.73, y: 1.5, z: 4.43}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalPosition: {x: 73.73, y: 1.8, z: 4.43}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5500339125268052030}
   - {fileID: 766471293}
@@ -64304,8 +64316,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.7
-  m_Height: 1
+  m_Radius: 3
+  m_Height: 3
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &5500339125268052030

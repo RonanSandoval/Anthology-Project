@@ -27,6 +27,8 @@ public class DreamBunny : Collectable
     enum State {Idle, Running, Waiting, Returning}
     State currentState;
 
+    SpriteRenderer sr;
+
     protected override void onTouch()
     {  
 
@@ -53,6 +55,7 @@ public class DreamBunny : Collectable
         player = GameObject.FindGameObjectWithTag("Player");
         sc = GetComponent<SoundController>();
         rb = GetComponent<Rigidbody>();
+        sr = GetComponentInChildren<SpriteRenderer>();
         homePoint = transform.position;
         currentState = State.Idle;
         movePoint = homePoint;
@@ -87,6 +90,13 @@ public class DreamBunny : Collectable
     void Update() {
         waitCounter -= Time.deltaTime;
         determineState();
+
+        if (rb.velocity.x < 0) {
+            sr.flipX = true;
+        }
+        if (rb.velocity.x > 0) {
+            sr.flipX = false;
+        }
     }
 
     void determineState() {

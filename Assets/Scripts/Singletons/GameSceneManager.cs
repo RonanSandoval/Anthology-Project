@@ -29,6 +29,11 @@ public class GameSceneManager : MonoBehaviour
 
     public void changeSceneFade(string sceneName) {
         toScene = sceneName;
+
+        if (sceneName == "Finale") {
+            GameStateManager.Instance.setCurrentState(GameStateManager.GameState.Finale);
+        }
+
         onSceneChange.Invoke();
     }
 
