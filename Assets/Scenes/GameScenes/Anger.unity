@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1112398, g: 0.14110455, b: 0.1931026, a: 1}
+  m_IndirectSpecularColor: {r: 0.11124001, g: 0.14110476, b: 0.19310296, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2137,7 +2137,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 307400750}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.1259, y: 3.2614, z: -24.1}
+  m_LocalPosition: {x: 15.1259, y: 3.2614, z: -26.37}
   m_LocalScale: {x: 3.5166078, y: 3.5166078, z: 3.5166078}
   m_Children: []
   m_Father: {fileID: 590587243}
@@ -4254,6 +4254,18 @@ PrefabInstance:
       propertyPath: collectID
       value: Rock13
       objectReference: {fileID: 0}
+    - target: {fileID: 3063281843820534649, guid: 1d5d9d3f53cf3884daf26fbc83d8f10e, type: 3}
+      propertyPath: m_Size.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3063281843820534649, guid: 1d5d9d3f53cf3884daf26fbc83d8f10e, type: 3}
+      propertyPath: m_Size.y
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3063281843820534649, guid: 1d5d9d3f53cf3884daf26fbc83d8f10e, type: 3}
+      propertyPath: m_Size.z
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3063281843820534654, guid: 1d5d9d3f53cf3884daf26fbc83d8f10e, type: 3}
       propertyPath: m_Name
       value: Rock (12)
@@ -4264,7 +4276,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3063281843820534655, guid: 1d5d9d3f53cf3884daf26fbc83d8f10e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -125.4
+      value: -125.41
       objectReference: {fileID: 0}
     - target: {fileID: 3063281843820534655, guid: 1d5d9d3f53cf3884daf26fbc83d8f10e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4850,7 +4862,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 782324126251647232, guid: b39611fa93d31b0479f32610c01fe954, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 35.85
+      value: 36.56
       objectReference: {fileID: 0}
     - target: {fileID: 782324126251647232, guid: b39611fa93d31b0479f32610c01fe954, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6162,7 +6174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b473f9f98d447b946b0023931ad1c8e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amplitude: 0.5
+  amplitude: 0.2
   frequency: 5
 --- !u!114 &980988767
 MonoBehaviour:
@@ -6386,7 +6398,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000871502}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.4, y: 4.4701, z: -20}
+  m_LocalPosition: {x: 12.4, y: 4.4701, z: -22.27}
   m_LocalScale: {x: 5.404532, y: 5.404532, z: 5.404532}
   m_Children: []
   m_Father: {fileID: 590587243}
@@ -7196,7 +7208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b473f9f98d447b946b0023931ad1c8e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amplitude: 0.5
+  amplitude: 0.2
   frequency: 5
 --- !u!114 &1149267830
 MonoBehaviour:
@@ -10229,7 +10241,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 782324126251647232, guid: b39611fa93d31b0479f32610c01fe954, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 102
+      value: 106.18
       objectReference: {fileID: 0}
     - target: {fileID: 782324126251647232, guid: b39611fa93d31b0479f32610c01fe954, type: 3}
       propertyPath: m_LocalPosition.y
@@ -10282,28 +10294,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 782324126251647232, guid: b39611fa93d31b0479f32610c01fe954, type: 3}
   m_PrefabInstance: {fileID: 1638898859}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1638898861 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 782324126251647235, guid: b39611fa93d31b0479f32610c01fe954, type: 3}
-  m_PrefabInstance: {fileID: 1638898859}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1638898862
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1638898861}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16956d3a59ab7f24abcc0f0402107f98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dimension: 0
-  amplitude: 12
-  speed: 3.5
-  negative: 0
-  cosMode: 0
 --- !u!1001 &1652095959
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10446,7 +10436,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b473f9f98d447b946b0023931ad1c8e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amplitude: 0.5
+  amplitude: 0.2
   frequency: 5
 --- !u!114 &1662885171
 MonoBehaviour:
@@ -11951,7 +11941,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -13191,7 +13181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b473f9f98d447b946b0023931ad1c8e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amplitude: 0.5
+  amplitude: 0.2
   frequency: 5
 --- !u!114 &2096448720
 MonoBehaviour:

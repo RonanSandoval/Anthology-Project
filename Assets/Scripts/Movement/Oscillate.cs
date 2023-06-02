@@ -7,15 +7,18 @@ public class Oscillate : MonoBehaviour
     [SerializeField] float amplitude;
     [SerializeField] float frequency;
 
+    Vector3 startPoint;
+
     float offset;
 
     void Start() {
         offset = Random.Range(0,10.1f);
+        startPoint = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(new Vector3(0, Mathf.Cos(offset + Time.time * frequency) * amplitude * Time.deltaTime, 0));
+        transform.position = new Vector3(transform.position.x, startPoint.y + Mathf.Sin(offset + Time.time * frequency) * amplitude, transform.position.z);
     }
 }

@@ -145,7 +145,7 @@ public class GameTaskManager : MonoBehaviour
                 "Find the Source of Wind",
                 0, // how many steps
                 TaskName.DepressionTalk, // next task?
-                GameProgressManager.ProgressFlag.ObtainedPapers
+                GameProgressManager.ProgressFlag.ObtainedFear
             )
         );
         taskList.Add( TaskName.DepressionTalk,

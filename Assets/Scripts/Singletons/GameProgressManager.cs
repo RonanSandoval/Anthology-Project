@@ -57,10 +57,6 @@ public class GameProgressManager : MonoBehaviour
         }
     }
 
-    void Start() {
-        MessageUI.instance.showMessage("Press E to Start");
-    }
-
     public void addProgress(ProgressFlag flag) {
         if (!progressComplete.Contains(flag)) {
             progressComplete.Add(flag);

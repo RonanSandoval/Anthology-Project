@@ -9823,10 +9823,10 @@ CapsuleCollider:
   m_Material: {fileID: 13400000, guid: 71e1f7691678ecf4ea299b7acae074ef, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.48
+  m_Radius: 0.52
   m_Height: 2.63
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: -0.02, z: 0}
 --- !u!114 &8357888365923320381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9881,7 +9881,7 @@ MonoBehaviour:
   canMove: 0
   canDash: 0
   respawnPS: {fileID: 3039051990481726038}
-  wind: {x: 0, y: -20, z: 0}
+  wind: {x: 0, y: -10, z: 0}
 --- !u!82 &1965025696
 AudioSource:
   m_ObjectHideFlags: 0

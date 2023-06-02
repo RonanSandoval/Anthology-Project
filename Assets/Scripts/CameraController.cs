@@ -41,7 +41,7 @@ public class CameraController : MonoBehaviour
 
         Vector3 targetPosition;
         if (GameStateManager.Instance.checkState(GameStateManager.GameState.Exploring)) {
-            targetPosition = new Vector3(playerObject.transform.position.x, playerObject.transform.position.y + 3 + yOffset, playerObject.transform.position.z - 9);
+            targetPosition = new Vector3(playerObject.transform.position.x, playerObject.transform.position.y + 3.5f + yOffset, playerObject.transform.position.z - 12);
         } else if (!onPartner) {
             targetPosition = new Vector3(playerObject.transform.position.x, playerObject.transform.position.y + 2 + yOffset, playerObject.transform.position.z - 5);
         } else {

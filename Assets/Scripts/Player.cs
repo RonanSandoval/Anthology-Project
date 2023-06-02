@@ -57,8 +57,8 @@ public class Player : MonoBehaviour
             sr.enabled = false;
         }
 
-        canDash = true;
-        //canDash = GameProgressManager.Instance.checkProgress(GameProgressManager.ProgressFlag.TalkedToDenial);
+        // canDash = true;
+        canDash = GameProgressManager.Instance.checkProgress(GameProgressManager.ProgressFlag.TalkedToDenial);
 
         if (GameStateManager.Instance.checkState(GameStateManager.GameState.Finale)) {
             canMove = false;
